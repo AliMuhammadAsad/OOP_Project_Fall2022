@@ -129,7 +129,7 @@ bool Game::FirstScreen()
 	// Loading success flag
 	bool success = true;
 	screen = 4;
-	gTexture = loadTexture("FirstScree.png");
+	gTexture = loadTexture("FirstScreen.png");
 	if (gTexture == NULL)
 	{
 		printf("Unable to run due to error: %s\n", SDL_GetError());
