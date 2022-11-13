@@ -32,7 +32,7 @@ public:
     void run();
     bool BackgroundScreen();
     bool RulesScreen();
-    bool MediumScreen();
+    bool PlayScreen();
     bool HardScreen();
     bool EndScreen();
     bool FirstScreen();

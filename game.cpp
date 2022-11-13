@@ -96,12 +96,39 @@ bool Game::loadMedia()
 	return success;
 }
 
-bool Game::BackgroundScreen()
+// bool Game::BackgroundScreen()
+// {
+// 	// Loading success flag
+// 	bool success = true;
+// 	screen = 2;
+// 	gTexture = loadTexture("bg.png");
+// 	if (gTexture == NULL)
+// 	{
+// 		printf("Unable to run due to error: %s\n", SDL_GetError());
+// 		success = false;
+// 	}
+// 	return success;
+// }
+bool Game::PlayScreen()
 {
 	// Loading success flag
 	bool success = true;
 	screen = 2;
 	gTexture = loadTexture("bg.png");
+	if (gTexture == NULL)
+	{
+		printf("Unable to run due to error: %s\n", SDL_GetError());
+		success = false;
+	}
+	return success;
+}
+
+bool Game::FirstScreen()
+{
+	// Loading success flag
+	bool success = true;
+	screen = 1;
+	gTexture = loadTexture("FirstScree.png");
 	if (gTexture == NULL)
 	{
 		printf("Unable to run due to error: %s\n", SDL_GetError());
@@ -124,33 +151,8 @@ bool Game::RulesScreen()
 	return success;
 }
 
-bool Game::FirstScreen()
-{
-	// Loading success flag
-	bool success = true;
-	screen = 4;
-	gTexture = loadTexture("FirstScreen.png");
-	if (gTexture == NULL)
-	{
-		printf("Unable to run due to error: %s\n", SDL_GetError());
-		success = false;
-	}
-	return success;
-}
 
-// bool Game::MediumScreen()
-// {
-// 	// Loading success flag
-// 	bool success = true;
-// 	screen = 5;
-// 	gTexture = loadTexture("bg.jpg");
-// 	if (gTexture == NULL)
-// 	{
-// 		printf("Unable to run due to error: %s\n", SDL_GetError());
-// 		success = false;
-// 	}
-// 	return success;
-// }
+
 
 // bool Game::HardScreen()
 // {
@@ -247,6 +249,31 @@ void Game::run( )
 			//this is a good location to add pigeon in linked list.
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
+				if (xMouse > 401 && xMouse < 498 && yMouse > 368 && yMouse < 423)
+				{
+					PlayScreen();
+				}
+				if (xMouse > 381 && xMouse < 513 && yMouse > 449 && yMouse < 489)
+				{
+					RulesScreen();
+				}
+				// if (xMouse > 75 && xMouse < 193 && yMouse > 236 && yMouse < 264)
+				// {
+				// 	BackgroundScreen();
+				// }
+				// if (xMouse > 226 && xMouse < 400 && yMouse > 235 && yMouse < 266)
+				// {
+				// 	MediumScreen();
+				// }
+				// if (xMouse > 429 && xMouse < 549 && yMouse > 236 && yMouse < 263)
+				// {
+				// 	HardScreen();
+				// }
+				if ((xMouse >= 394 && xMouse <= 499 && yMouse >= 533 && yMouse <= 585))
+				{
+					quit = true;
+				}
+			// }
 				finding_nemo.createObject(xMouse, yMouse);
 			}
 		}
@@ -265,153 +292,4 @@ void Game::run( )
 			
 }
 
-// void Game::run()
-// {
-// 	bool quit = false;
-// 	SDL_Event e;
-// 	// asteroids_point_zero apz;
-// 	asteroids_point_zero *apz = new asteroids_point_zero();
-// 	// if(screen == 1){
-// 	// 	Mix_PlayMusic(gMusic, -2);
-// 	// }
-
-// 	while (!quit)
-// 	{
-// 		// Handle events on queue
-// 		while (SDL_PollEvent(&e) != 0)
-// 		{
-// 			int xMouse, yMouse;
-// 			// User requests quit
-// 			if (e.type == SDL_QUIT)
-// 			{
-// 				quit = true;
-// 			}
-// 			if (e.type == SDL_MOUSEBUTTONDOWN)
-// 			{
-// 				// this is a good location to add pigeon in linked list.
-// 				SDL_GetMouseState(&xMouse, &yMouse);
-// 				if (xMouse > 175 && xMouse < 424 && yMouse > 355 && yMouse < 385)
-// 				{
-// 					LevelsScreen();
-// 				}
-// 				if (xMouse > 234 && xMouse < 367 && yMouse > 413 && yMouse < 448)
-// 				{
-// 					RulesScreen();
-// 				}
-// 				if (xMouse > 75 && xMouse < 193 && yMouse > 236 && yMouse < 264)
-// 				{
-// 					BackgroundScreen();
-// 				}
-// 				if (xMouse > 226 && xMouse < 400 && yMouse > 235 && yMouse < 266)
-// 				{
-// 					MediumScreen();
-// 				}
-// 				if (xMouse > 429 && xMouse < 549 && yMouse > 236 && yMouse < 263)
-// 				{
-// 					HardScreen();
-// 				}
-// 				if ((xMouse >= 258 && xMouse <= 347 && yMouse >= 480 && yMouse <= 503))
-// 				{
-// 					quit = true;
-// 				}
-// 			}
-// 			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE)
-// 			{
-// 				if (screen == 2 || screen == 5 || screen == 6)
-// 				{
-// 					apz->create_bullets(xMouse + 28, yMouse);
-// 				}
-// 			}
-// 			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (screen == 2 || screen == 3 || screen == 4 || screen == 5 || screen == 6))
-// 			{
-// 				gTexture = loadTexture("Startingscreen.png");
-// 				screen = 1;
-// 			}
-// 			if (e.type == SDL_MOUSEMOTION && screen == 2 || screen == 5 || screen == 6)
-// 			{
-// 				SDL_GetMouseState(&xMouse, &yMouse);
-// 				// cout << xMouse << " " << yMouse;
-// 				apz->checkMouseClick(xMouse, yMouse);
-// 			}
-// 			if (Mix_PlayingMusic() == 0)
-// 			{
-// 				// Play the music
-// 				Mix_PlayMusic(gMusic, -1);
-// 			}
-// 		}
-
-// 		SDL_RenderClear(Drawing::gRenderer);					  // removes everything from renderer
-// 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL); // Draws background to renderer
-// 		//***********************draw the objects here********************
-// 		if (apz->Life.n > 0)
-// 		{
-// 			if (screen == 2)
-// 			{
-// // 				apz->create_small_asteroid();
-// // 				apz->create_ufo();
-// // 				apz->create_bonus();
-// // 				apz->create_fire();
-// // 				apz->draw_spaceship();
-// // 				apz->draw_small_asteroid();
-// // 				apz->draw_ufo();
-// // 				apz->draw_bonus();
-// // 				apz->draw_fire();
-// // 				apz->draw_bullets();
-// // 				apz->collision();
-// // 				apz->draw_heart();
-// // 				apz->display_score();
-// 				// apz->draw_Mid_Life();
-// 				// apz->draw_End_Life();
-// 			}
-// 			if (screen == 5)
-// 			{
-// // 				apz->draw_medium();
-// // 				apz->draw_tiny();
-// // 				apz->draw_fire();
-// // 				apz->create_ufo();
-// // 				apz->create_bonus();
-// // 				apz->draw_spaceship();
-// // 				apz->create_medium();
-// // 				apz->create_fire();
-// // 				apz->create_tiny();
-// // 				apz->draw_ufo();
-// // 				apz->draw_bonus();
-// // 				apz->draw_bullets();
-// // 				apz->collision();
-// // 				apz->draw_heart();
-// // 				apz->display_score();
-// 				// apz->draw_Mid_Life();
-// 				// apz->draw_End_Life();
-// 			}
-// 			if (screen == 6)
-// 			{
-// 				apz->draw_hard();
-// // 				apz->draw_fire();
-// // 				apz->create_ufo();
-// // 				apz->create_bonus();
-// // 				apz->create_tiny();
-// // 				apz->draw_spaceship();
-// // 				apz->create_hard();
-// // 				apz->create_fire();
-// // 				apz->draw_bullets();
-// // 				apz->draw_tiny();
-// // 				apz->draw_bonus();
-// // 				apz->draw_ufo();
-// // 				apz->draw_heart();
-// 				// apz->draw_Mid_Life();
-// 				// apz->draw_End_Life();
-// 				apz->collision();
-// 				apz->display_score();
-// 			}
-// 		}
-// 		else
-// 		{
-// 			EndScreen();
-// 		}
-// 		//****************************************************************
-// 		SDL_RenderPresent(Drawing::gRenderer); // displays the updated renderer
-
-// 		SDL_Delay(100); // causes sdl engine to delay for specified miliseconds
-// 	}
-// }
 
