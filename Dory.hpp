@@ -6,8 +6,8 @@ class Dory{
 
 public:
     void draw();
-    void fly();
+    void swim();
     Dory(); 
-
+    void setMov(int x,int y);
     // you may add other overloaded constructors here... 
 };

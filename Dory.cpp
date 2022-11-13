@@ -6,7 +6,7 @@ void Dory::draw(){
 
 }
 
-void Dory::fly(){
+void Dory::swim(){
     // you have to do flying animations here
     moverRect.x += 5;
 }
@@ -15,7 +15,13 @@ Dory::Dory(){
     // src coorinates from assets.png file, they have been found using spritecow.com
     srcRect = {0,0,200,167};
 
-    // it will display pigeon on x = 30, y = 40 location, the size of pigeon is 50 width, 60 height
+    // it will display dory on x = 30, y = 40 location, the size of pigeon is 50 width, 50 height
     moverRect = {30, 40, 50, 50};
+}
+
+void Dory::setMov(int x, int y)
+{
+    moverRect.x = x; //moving the dory on x coordinates
+    moverRect.y = y; //moving the dory on y coordinates
 }
 

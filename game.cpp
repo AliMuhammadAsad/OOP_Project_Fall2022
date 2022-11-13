@@ -112,7 +112,7 @@ bool Game::loadMedia()
 bool Game::PlayScreen()
 {
 	// Loading success flag
-	Drawing::assets = loadTexture("smallfish_resized.png"); // small fish
+	// Drawing::assets = loadTexture("smallfish_resized.png"); // small fish
 	bool success = true;
 	screen = 2;
 	gTexture = loadTexture("bg.png");
@@ -233,13 +233,15 @@ void Game::run( )
 	bool quit = false;
 	SDL_Event e;
 
-	Finding_Nemo finding_nemo;
-
+	// Finding_Nemo *fn = new Finding_Nemo();
+	Finding_Nemo fn;
 	while( !quit )
 	{
+		int xMouse, yMouse;
 		//Handle events on queue
 		while( SDL_PollEvent( &e ) != 0 )
 		{
+			// int xMouse, yMouse;
 			//User requests quit
 			if( e.type == SDL_QUIT )
 			{
@@ -258,33 +260,34 @@ void Game::run( )
 				{
 					RulesScreen();
 				}
-				// if (xMouse > 75 && xMouse < 193 && yMouse > 236 && yMouse < 264)
-				// {
-				// 	BackgroundScreen();
-				// }
-				// if (xMouse > 226 && xMouse < 400 && yMouse > 235 && yMouse < 266)
-				// {
-				// 	MediumScreen();
-				// }
-				// if (xMouse > 429 && xMouse < 549 && yMouse > 236 && yMouse < 263)
-				// {
-				// 	HardScreen();
-				// }
 				if ((xMouse >= 394 && xMouse <= 499 && yMouse >= 533 && yMouse <= 585))
 				{
 					quit = true;
 				}
-			// }
-				finding_nemo.createObject(xMouse, yMouse);
+			}
+			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (screen == 2 || screen == 3))
+			{
+				gTexture = loadTexture("FirstScreen.png");
+				screen = 1;
+			}
+			if (e.type == SDL_MOUSEMOTION && screen == 2)
+			{
+				SDL_GetMouseState(&xMouse, &yMouse);
+				// cout << xMouse << " " << yMouse;
+				fn.checkMouseClick(xMouse, yMouse);
 			}
 		}
 
 		SDL_RenderClear(Drawing::gRenderer); //removes everything from renderer
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL);//Draws background to renderer
 		//***********************draw the objects here********************
-
-		finding_nemo.drawObjects();
-
+		// if (fn.Life.n > 0)
+		// {
+			if (screen == 2)
+			{
+				fn.createObject(xMouse, yMouse);
+				fn.drawObjects();
+			}
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
 
