@@ -112,7 +112,7 @@ bool Game::loadMedia()
 bool Game::PlayScreen()
 {
 	// Loading success flag
-	Drawing::assets = loadTexture("resized_d1.png"); // small fish
+	Drawing::assets = loadTexture("smallfish_resized.png"); // small fish
 	bool success = true;
 	screen = 2;
 	gTexture = loadTexture("bg.png");
