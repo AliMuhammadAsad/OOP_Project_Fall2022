@@ -1,12 +1,17 @@
 #include<SDL.h>
+#include "drawing.hpp"
+#include "swimming_object.hpp"
 #include "Dory.hpp"
 #include "smallfish.hpp"
+#include "lives.hpp"
+#include "score.hpp"
 #include<vector>
 #include<list>
 using namespace std;
 
 class Finding_Nemo{
 
+    int score = 0;
     //Right now we're creating one pigeon, 
     Dory d1;
     Smallfish s1;
@@ -15,6 +20,11 @@ class Finding_Nemo{
     vector<Smallfish*> smallfishes;
 
     public:
+    Lives Life;
+
+    // Finding_Nemo();
+
+    // void draw_lives();
     void drawObjects(); 
     void createObject(int, int);
     
