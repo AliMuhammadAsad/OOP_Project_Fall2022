@@ -50,12 +50,12 @@ bool Game::init()
 				SDL_SetRenderDrawColor(Drawing::gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
 				// Initialize PNG loading
-				int imgFlags = IMG_INIT_PNG;
-				if (!(IMG_Init(imgFlags) & imgFlags))
-				{
-					printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
-					success = false;
-				}
+				// int imgFlags = IMG_INIT_PNG;
+				// if (!(IMG_Init(imgFlags) & imgFlags))
+				// {
+				// 	printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+				// 	success = false;
+				// }
 				// if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 				// {
 				// 	printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
@@ -76,7 +76,7 @@ bool Game::loadMedia()
 	// Loading success flag
 	bool success = true;
 
-	Drawing::assets = loadTexture("resized_d1.png");
+	Drawing::assets = loadTexture("resized_d1_left.png");
 	screen = 1;
 	gTexture = loadTexture("FirstScreen.png");
 	if (Drawing::assets == NULL || gTexture == NULL)
@@ -92,7 +92,7 @@ bool Game::loadMedia()
 	// }
 	// // else{
 	// // 	cout << "song";
-	// // }
+	// }
 	return success;
 }
 
@@ -129,7 +129,7 @@ bool Game::FirstScreen()
 	// Loading success flag
 	bool success = true;
 	screen = 1;
-	gTexture = loadTexture("FirstScree.png");
+	gTexture = loadTexture("FirstScreen.png");
 	if (gTexture == NULL)
 	{
 		printf("Unable to run due to error: %s\n", SDL_GetError());

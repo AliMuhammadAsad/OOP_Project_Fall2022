@@ -27,6 +27,7 @@ class Game
 public:
     bool init();
     bool loadMedia();
+    // SDL_Texture *Mix_LoadMUS(std::string path);
     void close();
     SDL_Texture *loadTexture(std::string path);
     void run();
