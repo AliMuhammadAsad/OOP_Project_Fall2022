@@ -32,7 +32,7 @@ public:
     SDL_Texture *loadTexture(std::string path);
     void run();
     bool FirstScreen();
-    bool BackgroundScreen();
+    bool PlayScreen();
     bool RulesScreen();
     // bool MediumScreen();
     // bool HardScreen();
