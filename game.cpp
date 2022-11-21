@@ -76,7 +76,7 @@ bool Game::loadMedia()
 	// Loading success flag
 	bool success = true;
 
-	Drawing::assets = loadTexture("resized_d1_left.png");
+	Drawing::assets = loadTexture("Assets_Final.png");
 	screen = 1;
 	gTexture = loadTexture("FirstScreen.png");
 	if (Drawing::assets == NULL || gTexture == NULL)
@@ -112,7 +112,8 @@ bool Game::loadMedia()
 bool Game::PlayScreen()
 {
 	// Loading success flag
-	// Drawing::assets = loadTexture("smallfish_resized.png"); // small fish
+	// Drawing::assets = loadTexture("Shark sprites.png"); // small fish
+	// Drawing::assets = loadTexture("smallfishFinal.png");
 	bool success = true;
 	screen = 2;
 	gTexture = loadTexture("bg.png");

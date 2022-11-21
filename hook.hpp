@@ -1,14 +1,18 @@
 #include<SDL.h>
 #include "drawing.hpp"
-class Smallfish 
-{
+#pragma once
+
+class Hook{
 
     SDL_Rect srcRect, moverRect;
 
 public:
     void draw();
     void swim();
-    Smallfish(); 
-
+    Hook();
+    Hook(SDL_Rect s)
+    {
+        moverRect = s;
+    }
     // you may add other overloaded constructors here... 
 };

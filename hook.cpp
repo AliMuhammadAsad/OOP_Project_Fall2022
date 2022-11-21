@@ -1,41 +1,31 @@
-#include "smallfish.hpp"
+#include "hook.hpp"
+#include<vector>
+#include<list>
+#include<SDL.h>
 // pigeon implementation will go here.
-
-void Smallfish::draw(){
+// vector<Pigeon*> pigeons;
+void Hook::draw(){
     SDL_RenderCopy(Drawing::gRenderer, Drawing::assets, &srcRect, &moverRect);
-
+    // SDL_RenderCopy(gRenderer, assets, &pigeon.srcRect, &pigeon.moverRect);
 }
 
-void Smallfish::swim(){
+void Hook::swim(){
     // you have to do flying animations here
-       moverRect.y+=5;
+        moverRect.y+=5;
         // pigeons[i].moverRect.y-=5;
-        int z = moverRect.x % 3;
-        if (z==0)
-        {
-            srcRect = {2414, 0, 28, 50};
-        }
-        if (z==1)
-        {
-            srcRect = {2466, 0, 26, 50};
-        }
-        if (z==2)
-        {
-            srcRect = {2514, 0, 28, 50};
-        }
         if (moverRect.y > 1000) // rotates pigeon across the screen
         {
             moverRect.y = 0;
         }
+
+    // moverRect.x += 5;
 }
 
-Smallfish::Smallfish(){
+Hook::Hook(){
     // src coorinates from assets.png file, they have been found using spritecow.com
-    srcRect = {0,0,260,194};
+    srcRect = {1600, 0, 23, 80};
 
     // it will display pigeon on x = 30, y = 40 location, the size of pigeon is 50 width, 60 height
-    moverRect = {200, 40, 30, 30};
+    moverRect = {400, 20, 50, 50};
 }
-
-
 

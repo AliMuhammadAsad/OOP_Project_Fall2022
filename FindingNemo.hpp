@@ -5,6 +5,10 @@
 #include "smallfish.hpp"
 #include "lives.hpp"
 #include "score.hpp"
+#include "shark.hpp"
+#include "shark2.hpp"
+#include "hook.hpp"
+#include "boat.hpp"
 #include<vector>
 #include<list>
 using namespace std;
@@ -16,11 +20,14 @@ class Finding_Nemo{
     // Dory *dory;
     Dory d1;
     Smallfish s1;
+    Shark sh1;
+    Shark2 sh2;
+    Hook h1;
+    // Boat b1;
     // In the solution you have to create vectors of pigeons, eggs, and nests    
     vector<Smallfish*> smallfishes;
-    // In the solution you have to create vectors of pigeons, eggs, and nests    
-
-
+    vector<Shark*> sharks;
+    vector<Hook*> hooks;
     public:
     Lives Life;
 
