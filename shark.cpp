@@ -16,15 +16,15 @@ void Shark::swim(){
         int z = moverRect.x % 3;
         if (z==0)
         {
-            srcRect = {3234, 31, 188, 101};
+            srcRect = {34, 1867, 188, 101};
         }
         if (z==1)
         {
-            srcRect = {3492, 31, 200, 101};
+            srcRect = {292, 1867, 200, 101};
         }
         if (z==2)
         {
-            srcRect = {3766, 31, 200, 101};
+            srcRect = {566, 1867, 200, 101};
         }
         if (moverRect.x > 1000) // rotates pigeon across the screen
         {
@@ -36,7 +36,7 @@ void Shark::swim(){
 
 Shark::Shark(){
     // src coorinates from assets.png file, they have been found using spritecow.com
-    srcRect = {3234, 31, 188, 101};
+    srcRect = {34, 1867, 188, 101};
 
     // it will display pigeon on x = 30, y = 40 location, the size of pigeon is 50 width, 60 height
     moverRect = {30, 40, 100, 100};

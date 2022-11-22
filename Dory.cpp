@@ -13,10 +13,14 @@ void Dory::swim(){
 
 Dory::Dory(){
     // src coorinates from assets.png file, they have been found using spritecow.com
-    // srcRect = {0,0,200,167};
-    srcRect = {0,613,199,166};
+    srcRect = {800,1837,199,166};
     // it will display dory on x = 30, y = 40 location, the size of pigeon is 50 width, 50 height
     moverRect = {30, 40, 50, 50};
+
+    // srcRect = {1,1,199,166};
+    // // it will display dory on x = 30, y = 40 location, the size of pigeon is 50 width, 50 height
+    // moverRect = {30, 40, 50, 50};
+
 }
 
 void Dory::setMov(int x, int y)

@@ -76,7 +76,7 @@ bool Game::loadMedia()
 	// Loading success flag
 	bool success = true;
 
-	Drawing::assets = loadTexture("Assets_Final.png");
+	Drawing::assets = loadTexture("Combined_assets.png");
 	screen = 1;
 	gTexture = loadTexture("FirstScreen.png");
 	if (Drawing::assets == NULL || gTexture == NULL)
@@ -234,8 +234,8 @@ void Game::run( )
 	bool quit = false;
 	SDL_Event e;
 
-	// Finding_Nemo *fn = new Finding_Nemo();
-	Finding_Nemo fn;
+	Finding_Nemo *fn = new Finding_Nemo();
+	// Finding_Nemo fn;
 	while( !quit )
 	{
 		int xMouse, yMouse;
@@ -275,7 +275,7 @@ void Game::run( )
 			{
 				SDL_GetMouseState(&xMouse, &yMouse);
 				// cout << xMouse << " " << yMouse;
-				fn.checkMouseClick(xMouse, yMouse);
+				fn->checkMouseClick(xMouse, yMouse);
 			}
 		}
 
@@ -286,8 +286,8 @@ void Game::run( )
 		// {
 			if (screen == 2)
 			{
-				fn.createObject(xMouse, yMouse);
-				fn.drawObjects();
+				fn->createObject(xMouse, yMouse);
+				fn->drawObjects();
 			}
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer

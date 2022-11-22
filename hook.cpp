@@ -23,7 +23,7 @@ void Hook::swim(){
 
 Hook::Hook(){
     // src coorinates from assets.png file, they have been found using spritecow.com
-    srcRect = {1600, 0, 23, 80};
+    srcRect = {800, 612, 23, 80};
 
     // it will display pigeon on x = 30, y = 40 location, the size of pigeon is 50 width, 60 height
     moverRect = {400, 20, 50, 50};
