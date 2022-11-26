@@ -9,7 +9,8 @@ class Shark{
 public:
     void draw();
     void swim();
-    Shark();
+    bool del_shark();
+    Shark(int);
     Shark(SDL_Rect s)
     {
         moverRect = s;

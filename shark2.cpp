@@ -54,7 +54,7 @@ void Shark2::swim(){
     // moverRect.x += 5;
 }
 
-Shark2::Shark2(){
+Shark2::Shark2(int y){
     // src coorinates from assets.png file, they have been found using spritecow.com
 <<<<<<< Updated upstream
     srcRect = {34, 2159, 188, 101};
@@ -63,8 +63,12 @@ Shark2::Shark2(){
 >>>>>>> Stashed changes
 
     // it will display pigeon on x = 30, y = 40 location, the size of pigeon is 50 width, 60 height
-    moverRect = {30, 300, 100, 100};
+    moverRect = {0, y, 100, 100};
 }
 
+bool Shark2::del_shark(){
+    if(moverRect.x >= 1000) return true;
+    else return false;
+}
 
 
