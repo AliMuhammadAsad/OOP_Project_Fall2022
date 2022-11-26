@@ -10,6 +10,7 @@ private:
 
 public:
     void swim();
+    bool del_hook();
     Hook();
     Hook(int);
     // you may add other overloaded constructors here... 

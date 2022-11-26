@@ -19,6 +19,11 @@ void Hook::swim(){
     // moverRect.x += 5;
 }
 
+bool Hook::del_hook(){
+    if(moverRect.y >= 580) return true;
+    else return false;
+}
+
 // Hook::Hook(){
 //     // src coorinates from assets.png file, they have been found using spritecow.com
 //     srcRect = {800, 612, 23, 80};

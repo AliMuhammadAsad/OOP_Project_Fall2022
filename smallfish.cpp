@@ -28,9 +28,12 @@ void Smallfish::swim(){
         // {
         //     moverRect.x = 0;
         // }
-       
 }
 
+bool Smallfish::del_smallfish(){
+    if(moverRect.x >= 1000 || moverRect.y >= 580) return true;
+    else return false;
+}
 // deleting memory
 // void Smallfish::remove_smallfish() //removing bullets
 // {

@@ -5,10 +5,67 @@
 #include<list>
 using namespace std;
 
+void Finding_Nemo::checkMouseClick(int x, int y)
+{
+    // dory->setMov(x, y);
+    d1.setMov(x, y);
+    
+}
+
 // Finding_Nemo::Finding_Nemo(){ //constructor for Finding_Nemo
 //     dory = new Dory(); // This dynamically creates one obj of Dory 
 // }
 
+/*--------------------------------------------------------------------------------------------------------------*/
+//The Big Bang - Here creation of our objects first began and we made molds of what we wanted to create
+
+void Finding_Nemo::createObject(int x, int y)
+{
+    cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
+}
+
+void Finding_Nemo::create_smallfish()
+{
+    int n = rand() % 550;
+    int p = rand() % 30; //probability of generation
+    if (p == 1)
+    {
+        Smallfish *s1 = new Smallfish(n); //dynamically creating objects
+        smallfishes.push_back(s1); //pushing back objects
+    }
+}
+
+void Finding_Nemo::create_hook()
+{
+    int n = rand() % 550;
+    int p = rand() % 30; //probability of generation
+    if (p == 1)
+    {
+        Hook *h1 = new Hook(n); //dynamically creating objects
+        hooks.push_back(h1); //pushing back objects
+    }
+}
+
+void Finding_Nemo::createShark1(){
+    int y_cord = rand() % 550;
+    int prob_gen = rand() % 50;
+    if(prob_gen == 1){
+        Shark* shark = new Shark(y_cord);
+        sharks1.push_back(shark);
+    }
+}
+
+void Finding_Nemo::createShark2(){
+    int y_cord = rand() % 550;
+    int prob_gen = rand() % 50;
+    if(prob_gen == 1){
+        Shark2* shark = new Shark2(y_cord);
+        sharks2.push_back(shark);
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------*/
+//Drawing Section - Here life was breathed into our molds and objects, and henceforth they sprang with life and swam with joy exploring the vastness of the world's oceans 
 
 void Finding_Nemo::drawObjects()
 {
@@ -44,63 +101,12 @@ void Finding_Nemo::draw_hook()
 //     Life.draw();
 // }
 
-void Finding_Nemo::createObject(int x, int y)
-{
-    cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
-}
-
-void Finding_Nemo::checkMouseClick(int x, int y)
-{
-    // dory->setMov(x, y);
-    d1.setMov(x, y);
-    
-}
-
-void Finding_Nemo::create_smallfish()
-{
-    int n = rand() % 550;
-    int p = rand() % 30; //probability of generation
-    if (p == 1)
-    {
-        Smallfish *s1 = new Smallfish(n); //dynamically creating objects
-        smallfishes.push_back(s1); //pushing back objects
-    }
-}
-
-void Finding_Nemo::create_hook()
-{
-    int n = rand() % 550;
-    int p = rand() % 30; //probability of generation
-    if (p == 1)
-    {
-        Hook *h1 = new Hook(n); //dynamically creating objects
-        hooks.push_back(h1); //pushing back objects
-    }
-}
-
-void Finding_Nemo::createShark1(){
-    int y_cord = rand() % 550;
-    int prob_gen = rand() % 50;
-    if(prob_gen == 1){
-        Shark* shark = new Shark(y_cord);
-        sharks1.push_back(shark);
-    }
-}
-
 void Finding_Nemo::drawShark1(){
     for(int i = 0; i < sharks1.size(); i++){
         sharks1[i]->draw(); sharks1[i]->swim();
     }
 }
 
-void Finding_Nemo::createShark2(){
-    int y_cord = rand() % 550;
-    int prob_gen = rand() % 50;
-    if(prob_gen == 1){
-        Shark2* shark = new Shark2(y_cord);
-        sharks2.push_back(shark);
-    }
-}
 
 void Finding_Nemo::drawShark2(){
     for(int i = 0; i < sharks2.size(); i++){
@@ -108,17 +114,36 @@ void Finding_Nemo::drawShark2(){
     }
 }
 
+/*--------------------------------------------------------------------------------------------------------------*/
+//Deletion Section - Not everything can last forever. This is the place where our beloved objects go to die, forgotten, floating in the endless void for eternity - alone and scared.
+
 void Finding_Nemo::deleteObjects(){
-    for(int s1c = 0; s1c < sharks1.size(); s1c++){
+    
+    for(int s1c = 0; s1c < sharks1.size(); s1c++){ //s1c means Shark1 Check
         if(sharks1[s1c]->del_shark() == true){
             delete sharks1[s1c]; sharks1.erase(sharks1.begin() + s1c);
-            cout << "Shark1 has been deleted\n";
+            cout << "Shark1 has been deleted. It will now float alone in the endless void for eternity.\n";
         }
     }
-    for(int s2c = 0; s2c < sharks2.size(); s2c++){
+    
+    for(int s2c = 0; s2c < sharks2.size(); s2c++){ //s2c means Shark2 Check
         if(sharks2[s2c]->del_shark() == true){
             delete sharks2[s2c]; sharks2.erase(sharks2.begin() + s2c);
-            cout << "Shark2 has been deleted\n";
+            cout << "Shark2 has been deleted. It will now float alone in the endless void for eternity.\n";
+        }
+    }
+    
+    for(int sfc = 0; sfc < smallfishes.size(); sfc++){ //sfc = smallfishes check
+        if(smallfishes[sfc]->del_smallfish() == true){
+            delete smallfishes[sfc]; smallfishes.erase(smallfishes.begin() + sfc);
+            cout << "Smallfish has been deleted. It will now float alone in the endless void for eternity.\n";
+        }
+    }
+
+    for(int h = 0; h < hooks.size(); h++){
+        if(hooks[h]->del_hook() == true){
+            delete hooks[h]; hooks.erase(hooks.begin() + h);
+            cout << "Hook has been deleted. Hook is not a living thing so we don't care if it floats alone in the endless void.\n";
         }
     }
 }

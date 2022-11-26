@@ -12,6 +12,7 @@ public:
     void swim();
     Smallfish(); 
     Smallfish(int);
+    bool del_smallfish();
     // void remove_Smallfish(); 
     // you may add other overloaded constructors here... 
 };
