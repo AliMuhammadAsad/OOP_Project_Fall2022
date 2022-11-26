@@ -42,4 +42,5 @@ class Finding_Nemo{
     void createShark1();
     void createShark2();
     void checkMouseClick(int, int);
+    void deleteObjects();
 };

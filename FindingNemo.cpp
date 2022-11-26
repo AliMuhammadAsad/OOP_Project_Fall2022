@@ -55,10 +55,10 @@ void Finding_Nemo::createShark1(){
 void Finding_Nemo::drawShark1(){
     for(int i = 0; i < sharks1.size(); i++){
         sharks1[i]->draw(); sharks1[i]->swim();
-        if(sharks1[i]->del_shark() == true){
-            delete sharks1[i]; sharks1.erase(sharks1.begin() + i);
-            cout << "Shark1 has been deleted\n";
-        }
+        // if(sharks1[i]->del_shark() == true){
+        //     delete sharks1[i]; sharks1.erase(sharks1.begin() + i);
+        //     cout << "Shark1 has been deleted\n";
+        // }
     }
 }
 
@@ -74,10 +74,10 @@ void Finding_Nemo::createShark2(){
 void Finding_Nemo::drawShark2(){
     for(int i = 0; i < sharks2.size(); i++){
         sharks2[i]->draw(); sharks2[i]->swim();
-        if(sharks2[i]->del_shark() == true){
-            delete sharks2[i]; sharks2.erase(sharks2.begin() + i);
-            cout << "Shark2 has been deleted\n";
-        }
+        // if(sharks2[i]->del_shark() == true){
+        //     delete sharks2[i]; sharks2.erase(sharks2.begin() + i);
+        //     cout << "Shark2 has been deleted\n";
+        // }
     }
 }
 
@@ -86,4 +86,19 @@ void Finding_Nemo::checkMouseClick(int x, int y)
     // dory->setMov(x, y);
     d1.setMov(x, y);
     
+}
+
+void Finding_Nemo::deleteObjects(){
+    for(int s1c = 0; s1c < sharks1.size(); s1c++){
+        if(sharks1[s1c]->del_shark() == true){
+            delete sharks1[s1c]; sharks1.erase(sharks1.begin() + s1c);
+            cout << "Shark1 has been deleted\n";
+        }
+    }
+    for(int s2c = 0; s2c < sharks2.size(); s2c++){
+        if(sharks2[s2c]->del_shark() == true){
+            delete sharks2[s2c]; sharks2.erase(sharks2.begin() + s2c);
+            cout << "Shark2 has been deleted\n";
+        }
+    }
 }
