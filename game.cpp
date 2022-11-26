@@ -288,6 +288,10 @@ void Game::run( )
 			{
 				fn->createObject(xMouse, yMouse);
 				fn->drawObjects();
+				fn->create_smallfish();
+				fn->draw_smallfish();
+				fn->create_hook();
+				fn->draw_hook();
 			}
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer

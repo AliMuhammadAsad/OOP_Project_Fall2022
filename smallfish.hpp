@@ -1,14 +1,18 @@
 #include<SDL.h>
 #include "drawing.hpp"
-class Smallfish 
+#include "swimming_object.hpp"
+#pragma once
+class Smallfish : public Swimming_Object
 {
-
-    SDL_Rect srcRect, moverRect;
-
+    private:
+    // SDL_Rect srcRect, moverRect;
+    SDL_Rect src, mover;
 public:
-    void draw();
+    // void draw();
     void swim();
     Smallfish(); 
-
+    Smallfish(int);
+    // void remove_Smallfish(); 
     // you may add other overloaded constructors here... 
 };
+

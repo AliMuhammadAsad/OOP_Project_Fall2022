@@ -1,18 +1,16 @@
 #include<SDL.h>
 #include "drawing.hpp"
+#include "swimming_object.hpp"
 #pragma once
 
-class Hook{
-
-    SDL_Rect srcRect, moverRect;
+class Hook : public Swimming_Object
+{
+private:
+    SDL_Rect src, mover;
 
 public:
-    void draw();
     void swim();
     Hook();
-    Hook(SDL_Rect s)
-    {
-        moverRect = s;
-    }
+    Hook(int);
     // you may add other overloaded constructors here... 
 };
