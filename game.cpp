@@ -288,6 +288,10 @@ void Game::run( )
 			{
 				fn->createObject(xMouse, yMouse);
 				fn->drawObjects();
+				fn->createShark1();
+				fn->createShark2();
+				fn->drawShark1();
+				fn->drawShark2();
 			}
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer

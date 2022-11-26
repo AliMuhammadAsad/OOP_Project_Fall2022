@@ -34,12 +34,17 @@ void Shark::swim(){
     // moverRect.x += 5;
 }
 
-Shark::Shark(){
+Shark::Shark(int y){
     // src coorinates from assets.png file, they have been found using spritecow.com
     srcRect = {34, 1867, 188, 101};
 
     // it will display pigeon on x = 30, y = 40 location, the size of pigeon is 50 width, 60 height
-    moverRect = {30, 40, 100, 100};
+    moverRect = {0, y, 100, 100};
+}
+
+bool Shark::del_shark(){
+    if(moverRect.x >= 1000) return true;
+    else return false;
 }
 
 

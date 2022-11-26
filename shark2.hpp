@@ -9,10 +9,11 @@ class Shark2{
 public:
     void draw();
     void swim();
-    Shark2();
+    bool del_shark();
+    Shark2(int);
     Shark2(SDL_Rect s)
     {
         moverRect = s;
     }
-    // you may add other overloaded constructors here... 
+    
 };

@@ -20,13 +20,14 @@ class Finding_Nemo{
     // Dory *dory;
     Dory d1;
     Smallfish s1;
-    Shark sh1;
-    Shark2 sh2;
+    // Shark sh1;
+    // Shark2 sh2;
     Hook h1;
     // Boat b1;
     // In the solution you have to create vectors of pigeons, eggs, and nests    
     vector<Smallfish*> smallfishes;
-    vector<Shark*> sharks;
+    vector<Shark*> sharks1;
+    vector<Shark2*> sharks2;
     vector<Hook*> hooks;
     public:
     Lives Life;
@@ -35,6 +36,10 @@ class Finding_Nemo{
 
     // void draw_lives();
     void drawObjects(); 
+    void drawShark1();
+    void drawShark2();
     void createObject(int, int);
+    void createShark1();
+    void createShark2();
     void checkMouseClick(int, int);
 };
