@@ -5,11 +5,16 @@
 //     SDL_RenderCopy(Drawing::gRenderer, Drawing::assets, &srcRect, &moverRect);
 
 // }
+<<<<<<< Updated upstream
 Smallfish::Smallfish(int y) : Swimming_Object({954,1535,28,21}, {0, y, 30, 40}) {}
+=======
+Smallfish::Smallfish(int x) : Swimming_Object({800,0,50,42}, {x, 0, 30, 40}) {}
+>>>>>>> Stashed changes
 
 void Smallfish::swim(){
     // you have to do flying animations here
        moverRect.x+=5;
+<<<<<<< Updated upstream
        moverRect.y+=1;
        int z = moverRect.x % 3;
         if (z==0)
@@ -36,6 +41,12 @@ void Smallfish::swim(){
 // {
 //     moverRect = {0, 0, 0, 0};
 // }
+=======
+       srcRect = {800,0,50,42};
+       
+}
+
+>>>>>>> Stashed changes
 // Smallfish::Smallfish(){
 //     // src coorinates from assets.png file, they have been found using spritecow.com
 //     srcRect = {800,0,50,42};
@@ -43,5 +54,9 @@ void Smallfish::swim(){
 //     // it will display pigeon on x = 30, y = 40 location, the size of pigeon is 50 width, 60 height
 //     moverRect = {200, 40, 30, 30};
 // }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 

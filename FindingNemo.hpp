@@ -41,6 +41,9 @@ class Finding_Nemo{
     void checkMouseClick(int, int);
     void draw_smallfish();
     void create_smallfish();
+<<<<<<< Updated upstream
     void draw_hook();
     void create_hook();
+=======
+>>>>>>> Stashed changes
 };

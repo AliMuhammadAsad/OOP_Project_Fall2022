@@ -12,7 +12,10 @@ public:
     void swim();
     Smallfish(); 
     Smallfish(int);
+<<<<<<< Updated upstream
     // void remove_Smallfish(); 
+=======
+>>>>>>> Stashed changes
     // you may add other overloaded constructors here... 
 };
 
