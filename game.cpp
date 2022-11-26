@@ -292,6 +292,11 @@ void Game::run( )
 				fn->draw_smallfish();
 				fn->create_hook();
 				fn->draw_hook();
+				fn->createShark1();
+				fn->createShark2();
+				fn->drawShark1();
+				fn->drawShark2();
+				fn->deleteObjects();
 			}
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
