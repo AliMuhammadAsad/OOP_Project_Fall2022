@@ -21,8 +21,8 @@ class Finding_Nemo{
     // Dory *dory;
     Dory d1;
     // Smallfish s1;
-    Shark sh1;
-    Shark2 sh2;
+    // Shark sh1;
+    // Shark2 sh2;
     // Hook h1;
     // Boat b1;
     // In the solution you have to create vectors of pigeons, eggs, and nests    
@@ -41,9 +41,6 @@ class Finding_Nemo{
     void checkMouseClick(int, int);
     void draw_smallfish();
     void create_smallfish();
-<<<<<<< Updated upstream
     void draw_hook();
     void create_hook();
-=======
->>>>>>> Stashed changes
 };

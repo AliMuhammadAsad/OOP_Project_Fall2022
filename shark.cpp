@@ -13,7 +13,6 @@ void Shark::swim(){
     // you have to do flying animations here
         moverRect.x+=5;
         // pigeons[i].moverRect.y-=5;
-<<<<<<< Updated upstream
         int z = moverRect.x % 3;
         if (z==0)
         {
@@ -27,9 +26,6 @@ void Shark::swim(){
         {
             srcRect = {566, 1867, 200, 101};
         }
-=======
-        
->>>>>>> Stashed changes
         if (moverRect.x > 1000) // rotates pigeon across the screen
         {
             moverRect.x = 0;
@@ -40,11 +36,7 @@ void Shark::swim(){
 
 Shark::Shark(int y){
     // src coorinates from assets.png file, they have been found using spritecow.com
-<<<<<<< Updated upstream
     srcRect = {34, 1867, 188, 101};
-=======
-    srcRect = {834, 1255, 188, 101};
->>>>>>> Stashed changes
 
     // it will display pigeon on x = 30, y = 40 location, the size of pigeon is 50 width, 60 height
     moverRect = {0, y, 100, 100};

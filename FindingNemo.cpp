@@ -15,41 +15,13 @@ void Finding_Nemo::drawObjects()
     // call draw functions of all the objects here
     // if (screen == 1)
     d1.draw();
-    sh1.draw();
-    sh1.swim();
-<<<<<<< Updated upstream
-    sh2.draw();
-    sh2.swim();
+    // sh1.draw();
+    // sh1.swim();
+    // sh2.draw();
+    // sh2.swim();
  
 }
-void Finding_Nemo::draw_smallfish()
-{
-    for (auto &s1 : smallfishes) // initializing small fish
-    {
-        s1->draw(); // calling the draw functionality in the small asteroids
-        s1->swim();  // calling the fly functionality in the fly function
-    }
-=======
-    h1.draw();
-    h1.swim();
-    // s1.draw();
-    // s1.swim();
-    sh2.draw();
-    sh2.swim();
-    // for (auto &s1 : smallfishes) // initializing small fish
-    // {
-    //     s1->draw(); // calling the draw functionality in the small asteroids
-    //     s1->swim();  // calling the fly functionality in the fly function
-    // }
-    // b1.draw();
-    // b1.swim();
-    // for (int i = 0; i < sharks.size(); i++)
-    // {
-    //     sharks[i]->draw(); // this function is called to draw the pigeon
-    //     sharks[i]->swim(); // this function is called to move the pigeon
-    // }
->>>>>>> Stashed changes
-}
+
 void Finding_Nemo::draw_smallfish()
 {
     for (auto &s1 : smallfishes) // initializing small fish
@@ -93,7 +65,6 @@ void Finding_Nemo::create_smallfish()
         Smallfish *s1 = new Smallfish(n); //dynamically creating objects
         smallfishes.push_back(s1); //pushing back objects
     }
-<<<<<<< Updated upstream
 }
 
 void Finding_Nemo::create_hook()
@@ -105,6 +76,4 @@ void Finding_Nemo::create_hook()
         Hook *h1 = new Hook(n); //dynamically creating objects
         hooks.push_back(h1); //pushing back objects
     }
-=======
->>>>>>> Stashed changes
 }

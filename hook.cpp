@@ -19,15 +19,9 @@ void Hook::swim(){
     // moverRect.x += 5;
 }
 
-<<<<<<< Updated upstream
 // Hook::Hook(){
 //     // src coorinates from assets.png file, they have been found using spritecow.com
 //     srcRect = {800, 612, 23, 80};
-=======
-Hook::Hook(){
-    // src coorinates from assets.png file, they have been found using spritecow.com
-    srcRect = {800, 612, 23, 80};
->>>>>>> Stashed changes
 
 //     // it will display pigeon on x = 30, y = 40 location, the size of pigeon is 50 width, 60 height
 //     moverRect = {400, 20, 50, 50};
