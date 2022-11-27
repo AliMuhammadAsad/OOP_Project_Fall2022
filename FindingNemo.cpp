@@ -115,7 +115,6 @@ void Finding_Nemo::draw_Shark1(){
     }
 }
 
-
 void Finding_Nemo::draw_Shark2(){
     for(int i = 0; i < sharks2.size(); i++){
         sharks2[i]->draw(); sharks2[i]->swim();
@@ -127,14 +126,31 @@ void Finding_Nemo::draw_Shark2(){
 
 void Finding_Nemo::collision_dhuzzz(){
     // cout << "Nothing collided\n";
-    dory->draw();
+    dory->draw(); SDL_Rect dor = dory->getMov();
     for(auto &s1c : sharks1){
-        SDL_Rect dor = dory->getMov(); SDL_Rect s1 = s1c->getMov();
+        SDL_Rect s1 = s1c->getMov();
         if(SDL_HasIntersection(&dor, &s1)){
             cout << "Dory has collided with a shark but its okay as they friends for now\n";
         }
     }
-
+    for(auto &s2c : sharks2){
+        SDL_Rect s2 = s2c->getMov();
+        if(SDL_HasIntersection(&dor, &s2)){
+            cout << "Dory has collided with a shark 2 but its okay as they friends for now\n";
+        }
+    }
+    for(auto &sfc : smallfishes){
+        SDL_Rect sf = sfc->getMov();
+        if(SDL_HasIntersection(&dor, &sf)){
+            cout << "Dory has collided with a smallfish. Dory will proceed to eat the fish now\n";
+        }
+    }
+    for(auto &hc : hooks){
+        SDL_Rect h = hc->getMov();
+        if(SDL_HasIntersection(&dor, &h)){
+            cout << "Dory has been hit with a hook. Noooooooooooooooooo\n";
+        }
+    }
 }
 
 void Finding_Nemo::delete_Objects(){
