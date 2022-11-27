@@ -25,7 +25,7 @@ void Finding_Nemo::checkMouseClick(int x, int y)
 
 void Finding_Nemo::createObject(int x, int y)
 {
-    // cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
+    cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
 }
 
 void Finding_Nemo::create_smallfish()
@@ -50,7 +50,7 @@ void Finding_Nemo::create_hook()
     }
 }
 
-void Finding_Nemo::createShark1(){
+void Finding_Nemo::create_Shark1(){
     int y_cord = rand() % 550;
     int prob_gen = rand() % 50;
     if(prob_gen == 1){
@@ -59,7 +59,7 @@ void Finding_Nemo::createShark1(){
     }
 }
 
-void Finding_Nemo::createShark2(){
+void Finding_Nemo::create_Shark2(){
     int y_cord = rand() % 550;
     int prob_gen = rand() % 50;
     if(prob_gen == 1){
@@ -71,7 +71,7 @@ void Finding_Nemo::createShark2(){
 /*--------------------------------------------------------------------------------------------------------------*/
 //Drawing Section - Here life was breathed into our molds and objects, and henceforth they sprang with life and swam with joy exploring the vastness of the world's oceans 
 
-void Finding_Nemo::drawObjects()
+void Finding_Nemo::draw_Objects()
 {
     // call draw functions of all the objects here
     // if (screen == 1)
@@ -105,14 +105,18 @@ void Finding_Nemo::draw_hook()
 //     Life.draw();
 // }
 
-void Finding_Nemo::drawShark1(){
-    for(int i = 0; i < sharks1.size(); i++){
-        sharks1[i]->draw(); sharks1[i]->swim();
+void Finding_Nemo::draw_Shark1(){
+    // for(int i = 0; i < sharks1.size(); i++){
+    //     sharks1[i]->draw(); sharks1[i]->swim();
+    // }
+    for(auto &s1 : sharks1){
+        s1->draw(); 
+        s1->swim();
     }
 }
 
 
-void Finding_Nemo::drawShark2(){
+void Finding_Nemo::draw_Shark2(){
     for(int i = 0; i < sharks2.size(); i++){
         sharks2[i]->draw(); sharks2[i]->swim();
     }
@@ -133,7 +137,7 @@ void Finding_Nemo::collision_dhuzzz(){
 
 }
 
-void Finding_Nemo::deleteObjects(){
+void Finding_Nemo::delete_Objects(){
     
     for(int s1c = 0; s1c < sharks1.size(); s1c++){ //s1c means Shark1 Check
         if(sharks1[s1c]->del_shark() == true){

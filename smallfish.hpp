@@ -7,7 +7,7 @@ class Smallfish : public Swimming_Object
     private:
     // SDL_Rect srcRect, moverRect;
     SDL_Rect src, mover;
-public:
+    public:
     // void draw();
     void swim();
     Smallfish(); 

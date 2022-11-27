@@ -287,17 +287,17 @@ void Game::run( )
 			if (screen == 2)
 			{
 				fn->createObject(xMouse, yMouse);
-				fn->drawObjects();
+				fn->draw_Objects();
 				fn->create_smallfish();
 				fn->draw_smallfish();
 				fn->create_hook();
 				fn->draw_hook();
-				fn->createShark1();
-				fn->createShark2();
-				fn->drawShark1();
-				fn->drawShark2();
+				fn->create_Shark1();
+				fn->create_Shark2();
+				fn->draw_Shark1();
+				fn->draw_Shark2();
 				fn->collision_dhuzzz();
-				fn->deleteObjects();
+				fn->delete_Objects();
 			}
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
