@@ -29,3 +29,7 @@ void Dory::setMov(int x, int y)
     moverRect.y = y; //moving the dory on y coordinates
 }
 
+SDL_Rect Dory::getMov(){
+    return moverRect;
+}
+

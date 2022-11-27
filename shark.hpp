@@ -15,5 +15,6 @@ public:
     {
         moverRect = s;
     }
+    SDL_Rect getMov();
     // you may add other overloaded constructors here... 
 };

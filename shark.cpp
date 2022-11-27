@@ -47,5 +47,9 @@ bool Shark::del_shark(){
     else return false;
 }
 
+SDL_Rect Shark::getMov(){
+    return moverRect;
+}
+
 
 

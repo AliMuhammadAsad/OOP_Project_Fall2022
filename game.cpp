@@ -296,6 +296,7 @@ void Game::run( )
 				fn->createShark2();
 				fn->drawShark1();
 				fn->drawShark2();
+				fn->collision_dhuzzz();
 				fn->deleteObjects();
 			}
 		//****************************************************************

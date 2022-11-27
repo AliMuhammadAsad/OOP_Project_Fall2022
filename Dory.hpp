@@ -9,5 +9,6 @@ public:
     void swim();
     Dory(); 
     void setMov(int x,int y);
+    SDL_Rect getMov();
     // you may add other overloaded constructors here... 
 };

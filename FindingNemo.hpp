@@ -19,7 +19,7 @@ class Finding_Nemo{
     int score = 0;
     //Right now we're creating one pigeon, 
     // Dory *dory;
-    Dory d1;
+    Dory *dory;
     // Smallfish s1;
     // Shark sh1;
     // Shark2 sh2;
@@ -34,7 +34,7 @@ class Finding_Nemo{
     public:
     Lives Life;
 
-    // Finding_Nemo();
+    Finding_Nemo();
 
     // void draw_lives();
     void checkMouseClick(int, int);
@@ -48,5 +48,6 @@ class Finding_Nemo{
     void drawShark2();
     void draw_smallfish();
     void draw_hook();
+    void collision_dhuzzz();
     void deleteObjects();
 };

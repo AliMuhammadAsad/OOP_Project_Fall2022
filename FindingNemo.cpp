@@ -5,10 +5,14 @@
 #include<list>
 using namespace std;
 
+Finding_Nemo::Finding_Nemo(){
+    dory = new Dory();
+}
+
 void Finding_Nemo::checkMouseClick(int x, int y)
 {
     // dory->setMov(x, y);
-    d1.setMov(x, y);
+    dory->setMov(x, y);
     
 }
 
@@ -21,7 +25,7 @@ void Finding_Nemo::checkMouseClick(int x, int y)
 
 void Finding_Nemo::createObject(int x, int y)
 {
-    cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
+    // cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
 }
 
 void Finding_Nemo::create_smallfish()
@@ -71,7 +75,7 @@ void Finding_Nemo::drawObjects()
 {
     // call draw functions of all the objects here
     // if (screen == 1)
-    d1.draw();
+    dory->draw();
     // sh1.draw();
     // sh1.swim();
     // sh2.draw();
@@ -116,6 +120,18 @@ void Finding_Nemo::drawShark2(){
 
 /*--------------------------------------------------------------------------------------------------------------*/
 //Deletion Section - Not everything can last forever. This is the place where our beloved objects go to die, forgotten, floating in the endless void for eternity - alone and scared.
+
+void Finding_Nemo::collision_dhuzzz(){
+    // cout << "Nothing collided\n";
+    dory->draw();
+    for(auto &s1c : sharks1){
+        SDL_Rect dor = dory->getMov(); SDL_Rect s1 = s1c->getMov();
+        if(SDL_HasIntersection(&dor, &s1)){
+            cout << "Dory has collided with a shark but its okay as they friends for now\n";
+        }
+    }
+
+}
 
 void Finding_Nemo::deleteObjects(){
     
