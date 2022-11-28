@@ -5,8 +5,8 @@
 class Lives{
     protected:
     SDL_Rect srcRect, moverRect;
-    int life = 3;
     public:
+    int life = 3;
     Lives();
     void draw();
     void operator--(); //operator overloading for decreasing lives

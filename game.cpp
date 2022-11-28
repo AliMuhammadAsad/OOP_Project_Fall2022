@@ -4,6 +4,7 @@
 #include <vector>
 #include <time.h>
 #include <iostream>
+// #include <SDL_ttf.h>
 
 SDL_Renderer *Drawing::gRenderer = NULL;
 SDL_Texture *Drawing::assets = NULL;
@@ -84,6 +85,47 @@ bool Game::loadMedia()
 		printf("Unable to run due to error: %s\n", SDL_GetError());
 		success = false;
 	}
+	// screen = 2;
+	// int fontsize = 24;
+    // int t_width = 0; // width of the loaded font-texture
+    // int t_height = 0; // height of the loaded font-texture
+    // SDL_Color text_color = {0,0,0};
+    // string fontpath = "C:/Users/Administrator/Documents/GitHub/OOP_Project_Fall2022/arial.ttf";
+    // string text = "Score: ";
+    // TTF_Font* font = TTF_OpenFont(fontpath.c_str(), fontsize);
+    // SDL_Texture* ftexture = NULL; // our font-texture
+
+    // // check to see that the font was loaded correctly
+    // if (font == NULL) {
+    //     cerr << "Failed the load the font!\n";
+    //     cerr << "SDL_TTF Error: " << TTF_GetError() << "\n";
+    // }
+    // else {
+    //     // now create a surface from the font
+    //     SDL_Surface* text_surface = TTF_RenderText_Solid(font, text.c_str(), text_color);
+
+    //     // render the text surface
+    //     if (text_surface == NULL) {
+    //         cerr << "Failed to render text surface!\n";
+    //         cerr << "SDL_TTF Error: " << TTF_GetError() << "\n";
+    //     }
+    //     else {
+    //         // create a texture from the surface
+    //         ftexture = SDL_CreateTextureFromSurface(Drawing::gRenderer, text_surface);
+
+    //         if (ftexture == NULL) {
+    //             cerr << "Unable to create texture from rendered text!\n";
+    //         }
+    //         else {
+    //             t_width = text_surface->w; // assign the width of the texture
+    //             t_height = text_surface->h; // assign the height of the texture
+
+    //             // clean up after ourselves (destroy the surface)
+    //             SDL_FreeSurface(text_surface);
+    //         }
+    //     }
+    // }
+
 	// gMusic = Mix_LoadMUS("bg_music.mp3");
 	// if (gMusic == NULL)
 	// {
@@ -170,19 +212,19 @@ bool Game::RulesScreen()
 // 	return success;
 // }
 
-// bool Game::EndScreen()
-// {
-// 	// Loading success flag
-// 	bool success = true;
-// 	screen = 7;
-// 	gTexture = loadTexture("end.png");
-// 	if (gTexture == NULL)
-// 	{
-// 		printf("Unable to run due to error: %s\n", SDL_GetError());
-// 		success = false;
-// 	}
-// 	return success;
-// }
+bool Game::EndScreen()
+{
+	// Loading success flag
+	bool success = true;
+	screen = 4;
+	gTexture = loadTexture("EndScreen.png");
+	if (gTexture == NULL)
+	{
+		printf("Unable to run due to error: %s\n", SDL_GetError());
+		success = false;
+	}
+	return success;
+}
 
 void Game::close()
 {
@@ -242,7 +284,7 @@ void Game::run( )
 		//Handle events on queue
 		while( SDL_PollEvent( &e ) != 0 )
 		{
-			// int xMouse, yMouse;
+			//int xMouse, yMouse;
 			//User requests quit
 			if( e.type == SDL_QUIT )
 			{
@@ -266,7 +308,10 @@ void Game::run( )
 					quit = true;
 				}
 			}
-			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (screen == 2 || screen == 3))
+			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (screen == 2 || screen == 3 || screen == 4))
+			{
+				FirstScreen();
+			}
 			{
 				gTexture = loadTexture("FirstScreen.png");
 				screen = 1;
@@ -282,8 +327,8 @@ void Game::run( )
 		SDL_RenderClear(Drawing::gRenderer); //removes everything from renderer
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL);//Draws background to renderer
 		//***********************draw the objects here********************
-		// if (fn.Life.n > 0)
-		// {
+		if (fn->Life.life > 0)
+		{
 			if (screen == 2)
 			{
 				fn->createObject(xMouse, yMouse);
@@ -301,6 +346,8 @@ void Game::run( )
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
 			}
+		}
+		else EndScreen();
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
 
