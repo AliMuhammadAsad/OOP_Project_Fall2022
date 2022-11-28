@@ -297,7 +297,7 @@ void Game::run( )
 				fn->draw_Shark1();
 				fn->draw_Shark2();
 				fn->draw_lives();
-				// fn->show_score();
+				fn->show_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
 			}
