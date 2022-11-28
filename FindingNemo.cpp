@@ -14,7 +14,6 @@ void Finding_Nemo::checkMouseClick(int x, int y)
 {
     // dory->setMov(x, y);
     dory->setMov(x, y);
-    
 }
 
 // Finding_Nemo::Finding_Nemo(){ //constructor for Finding_Nemo
