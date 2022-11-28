@@ -13,7 +13,14 @@ Shark::Shark(int y) : Swimming_Object({34, 1867, 188, 101}, {0, y, 100, 100}) {}
 
 void Shark::swim(){
     // you have to do flying animations here
-        moverRect.x+=5;
+        // if (screen == 2)
+        // {
+            moverRect.x+=5;
+        // }
+        // else if (screen == 6)
+        // {
+            // moverRect.x+=10;
+        // }
         // switch(frame){
         //     case 0: srcRect = {34, 1867, 188, 101}; frame = 1; break;
         //     case 1: srcRect = {292, 1867, 200, 101}; frame = 2; break;

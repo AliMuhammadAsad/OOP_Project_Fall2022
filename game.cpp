@@ -111,11 +111,9 @@ bool Game::loadMedia()
 // 	}
 // 	return success;
 // }
-bool Game::PlayScreen()
+bool Game::HardScreen()
 {
 	// Loading success flag
-	// Drawing::assets = loadTexture("Shark sprites.png"); // small fish
-	// Drawing::assets = loadTexture("smallfishFinal.png");
 	bool success = true;
 	screen = 2;
 	gTexture = loadTexture("bg.png");
@@ -126,7 +124,32 @@ bool Game::PlayScreen()
 	}
 	return success;
 }
-
+bool Game::MediumScreen()
+{
+	// Loading success flag
+	bool success = true;
+	screen = 7;
+	gTexture = loadTexture("bg.png");
+	if (gTexture == NULL)
+	{
+		printf("Unable to run due to error: %s\n", SDL_GetError());
+		success = false;
+	}
+	return success;
+}
+bool Game::EasyScreen()
+{
+	// Loading success flag
+	bool success = true;
+	screen = 6;
+	gTexture = loadTexture("bg.png");
+	if (gTexture == NULL)
+	{
+		printf("Unable to run due to error: %s\n", SDL_GetError());
+		success = false;
+	}
+	return success;
+}
 bool Game::FirstScreen()
 {
 	// Loading success flag
@@ -155,15 +178,12 @@ bool Game::RulesScreen()
 	return success;
 }
 
-
-
-
 bool Game::LevelsScreen()
 {
 	// Loading success flag
 	bool success = true;
 	screen = 5;
-	gTexture = loadTexture("LevelsScreen.png");
+	gTexture = loadTexture("LevelsScreen.jpeg");
 	if (gTexture == NULL)
 	{
 		printf("Unable to run due to error: %s\n", SDL_GetError());
@@ -263,25 +283,29 @@ void Game::run( )
 				{
 					RulesScreen();
 				}
-				if ((xMouse >= 394 && xMouse <= 499 && yMouse >= 533 && yMouse <= 585 && screen == 1))
+				if (xMouse >= 394 && xMouse <= 499 && yMouse >= 533 && yMouse <= 585 && screen == 1)
 				{
 					quit = true;
 				}
-				if ((xMouse >= 501 && xMouse <= 839 && yMouse >= 229 && yMouse <= 312 && screen == 5))
+				if (xMouse >= 615 && xMouse <= 859 && yMouse >= 280 && yMouse <= 345 && screen == 5)
 				{
-					PlayScreen();
+					HardScreen();
 				}
-				if ((xMouse >= 137 && xMouse <= 477 && yMouse >= 229 && yMouse <= 312 && screen == 5))
+				if (xMouse >= 355 && xMouse <= 600 && yMouse >= 280 && yMouse <= 345 && screen == 5)
 				{
-					PlayScreen();
+					MediumScreen();
+				}
+				if (xMouse >= 90 && xMouse <= 344 && yMouse >= 280 && yMouse <= 345 && screen == 5)
+				{
+					EasyScreen();
 				}
 			}
-			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (screen == 2 || screen == 3 || screen == 4))
+			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (screen == 2 || screen == 3 || screen == 4 || screen == 6 || screen == 7))
 			{
 				gTexture = loadTexture("FirstScreen.png");
 				screen = 1;
 			}
-			if (e.type == SDL_MOUSEMOTION && screen == 2 || screen == 1 || screen == 5)
+			if (e.type == SDL_MOUSEMOTION && screen == 2 || screen == 1 || screen == 5 || screen == 6 || screen == 7)
 			{
 				SDL_GetMouseState(&xMouse, &yMouse);
 				cout << xMouse << " " << yMouse << endl;
@@ -298,18 +322,55 @@ void Game::run( )
 		//***********************draw the objects here********************
 		if (fn->Life.life > 0)
 		{
+			//Hard level
 			if (screen == 2)
 			{
 				fn->createObject(xMouse, yMouse);
 				fn->draw_Objects();
 				fn->create_smallfish();
 				fn->draw_smallfish();
-				fn->create_hook();
+				fn->create_hook_Hard();
 				fn->draw_hook();
-				fn->create_Shark1();
-				fn->create_Shark2();
+				fn->create_Shark1_Hard();
+				fn->create_Shark2_Hard();
 				fn->draw_Shark1();
 				fn->draw_Shark2();
+				fn->draw_lives();
+				fn->show_score();
+				fn->collision_dhuzzz();
+				fn->delete_Objects();
+			}
+			// Medium Level
+			if (screen == 7)
+			{
+				fn->createObject(xMouse, yMouse);
+				fn->draw_Objects();
+				fn->create_smallfish();
+				fn->draw_smallfish();
+				fn->create_hook_Medium();
+				fn->draw_hook();
+				fn->create_Shark1_Medium();
+				fn->create_Shark2_Medium();
+				fn->draw_Shark1();
+				fn->draw_Shark2();
+				fn->draw_lives();
+				fn->show_score();
+				fn->collision_dhuzzz();
+				fn->delete_Objects();
+			}
+			// Easy Level
+			if (screen == 6)
+			{
+				fn->createObject(xMouse, yMouse);
+				fn->draw_Objects();
+				fn->create_smallfish();
+				fn->draw_smallfish();
+				fn->create_hook_Easy();
+				fn->draw_hook();
+				fn->create_Shark1_Easy();
+				// fn->create_Shark2();
+				fn->draw_Shark1();
+				// fn->draw_Shark2();
 				fn->draw_lives();
 				fn->show_score();
 				fn->collision_dhuzzz();

@@ -41,10 +41,15 @@ class Finding_Nemo{
     // void draw_lives();
     void checkMouseClick(int, int);
     void createObject(int, int);
-    void create_Shark1();
-    void create_Shark2();
+    void create_Shark1_Hard();
+    void create_Shark1_Medium();
+    void create_Shark1_Easy();
+    void create_Shark2_Hard();
+    void create_Shark2_Medium();
     void create_smallfish();
-    void create_hook();
+    void create_hook_Hard();
+    void create_hook_Medium();
+    void create_hook_Easy();
     void draw_Objects(); 
     void draw_Shark1();
     void draw_Shark2();
