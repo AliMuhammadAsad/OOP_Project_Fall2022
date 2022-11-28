@@ -37,6 +37,7 @@ public:
     bool FirstScreen();
     bool PlayScreen();
     bool RulesScreen();
+    bool LevelsScreen();
     // TTF_Font* TTF_OpenFont(std::string path, int size);
     // bool MediumScreen();
     // bool HardScreen();
