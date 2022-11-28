@@ -3,6 +3,7 @@
 #include "FindingNemo.hpp"
 #include<vector>
 #include<list>
+#include<SDL_ttf.h>
 using namespace std;
 
 Finding_Nemo::Finding_Nemo(){
@@ -25,7 +26,7 @@ void Finding_Nemo::checkMouseClick(int x, int y)
 
 void Finding_Nemo::createObject(int x, int y)
 {
-    cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
+    // cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
 }
 
 void Finding_Nemo::create_smallfish()
@@ -121,37 +122,73 @@ void Finding_Nemo::draw_Shark2(){
     }
 }
 
+void Finding_Nemo::draw_lives(){
+    Life.draw();
+}
+
 /*--------------------------------------------------------------------------------------------------------------*/
 //Deletion Section - Not everything can last forever. This is the place where our beloved objects go to die, forgotten, floating in the endless void for eternity - alone and scared.
 
 void Finding_Nemo::collision_dhuzzz(){
-    // cout << "Nothing collided\n";
+
+    //Initializing Dory here
     dory->draw(); SDL_Rect dor = dory->getMov();
+    
+    //Collision with Shark type 1
     for(auto &s1c : sharks1){
         SDL_Rect s1 = s1c->getMov();
         if(SDL_HasIntersection(&dor, &s1)){
             cout << "Dory has collided with a shark but its okay as they friends for now\n";
+            --Life;
         }
     }
+
+    //Collision with Shark type 2
     for(auto &s2c : sharks2){
         SDL_Rect s2 = s2c->getMov();
         if(SDL_HasIntersection(&dor, &s2)){
             cout << "Dory has collided with a shark 2 but its okay as they friends for now\n";
+            --Life;
         }
     }
+
+    //Collission with smallfishes
     for(auto &sfc : smallfishes){
         SDL_Rect sf = sfc->getMov();
         if(SDL_HasIntersection(&dor, &sf)){
             cout << "Dory has collided with a smallfish. Dory will proceed to eat the fish now\n";
+            score += 10;
+            sfc->set_to_del();
+            cout <<"Your score is: " << score << endl;
         }
     }
+
+    //Collision with hooks
     for(auto &hc : hooks){
         SDL_Rect h = hc->getMov();
         if(SDL_HasIntersection(&dor, &h)){
             cout << "Dory has been hit with a hook. Noooooooooooooooooo\n";
+            --Life;
+            hc->set_to_del();
         }
     }
 }
+
+// void Finding_Nemo::show_score(){
+//     // SDL_Init();
+//     TTF_Init(); //Initializes SDL_TTF for displaying text in 
+//     TTF_Font* font = TTF_OpenFont("arial.ttf", 24); //Opens a font style that can be downloaded as a .ttf file and sets a font size
+//     SDL_Color color = {0, 0, 0}; //This is the texts color that can be changed using RGB values from 0 to 255.
+//     string tmp = to_string(score); //converts score to string that can later be displayed using the font file - hence why we needed font.
+//     SDL_Surface *surfacemessage = TTF_RenderText_Solid(font, tmp.c_str(), color); //A surface is created using functions from SDL library that displays the score on the screen.
+//     SDL_Texture *Message = SDL_CreateTextureFromSurface(Drawing::gRenderer, surfacemessage); //Converts into texture that can be displayed
+//     SDL_Rect Message_rect = {20, 50, 90, 30}; //create a rect for it
+//     SDL_RenderCopy(Drawing::gRenderer, Message, NULL, &Message_rect);
+//     SDL_FreeSurface(surfacemessage);
+//     SDL_DestroyTexture(Message);
+//     TTF_CloseFont(font);
+//     TTF_Quit();
+// }
 
 void Finding_Nemo::delete_Objects(){
     

@@ -13,3 +13,7 @@ void Swimming_Object::draw(){ //draw function to be inherited by all child class
 SDL_Rect Swimming_Object::getMov(){
     return moverRect; //getting moverRect value
 }
+
+void Swimming_Object::set_to_del(){
+    moverRect = {1100, 600, 50, 50};
+}

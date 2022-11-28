@@ -24,6 +24,10 @@ bool Hook::del_hook(){
     else return false;
 }
 
+// void Hook::set_to_del(){
+//     moverRect.y = 600;
+// }
+
 // Hook::Hook(){
 //     // src coorinates from assets.png file, they have been found using spritecow.com
 //     srcRect = {800, 612, 23, 80};

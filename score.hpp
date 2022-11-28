@@ -2,7 +2,7 @@
 
 class Score{
     private:
-    int s_score;
+    int score;
     
     public:
     Score(int); //constructor

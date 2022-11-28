@@ -11,6 +11,8 @@
 #include "boat.hpp"
 #include<vector>
 #include<list>
+#include<string>
+#include<SDL_ttf.h>
 #pragma once
 using namespace std;
 
@@ -43,12 +45,13 @@ class Finding_Nemo{
     void create_Shark2();
     void create_smallfish();
     void create_hook();
-    // void draw_Dory();
     void draw_Objects(); 
     void draw_Shark1();
     void draw_Shark2();
     void draw_smallfish();
     void draw_hook();
+    void draw_lives();
+    // void show_score();
     void collision_dhuzzz();
     void delete_Objects();
 };

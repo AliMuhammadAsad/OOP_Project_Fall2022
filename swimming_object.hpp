@@ -11,4 +11,5 @@ class Swimming_Object{
     void draw(); //draw that will be inherited by all child classes as is
     virtual void swim(); //virtual swim function that will be overrided by child classes - achieves polymorphism
     SDL_Rect getMov(); //getting Mover rect position
+    void set_to_del();
 };

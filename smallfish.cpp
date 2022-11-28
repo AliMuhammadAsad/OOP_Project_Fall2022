@@ -34,6 +34,10 @@ bool Smallfish::del_smallfish(){
     if(moverRect.x >= 1000 || moverRect.y >= 580) return true;
     else return false;
 }
+
+// void Smallfish::set_to_del(){
+//     moverRect = {1100, 600, 30, 40};
+// }
 // deleting memory
 // void Smallfish::remove_smallfish() //removing bullets
 // {
