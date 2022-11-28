@@ -51,7 +51,7 @@ class Finding_Nemo{
     void draw_smallfish();
     void draw_hook();
     void draw_lives();
-    // void show_score();
+    void show_score();
     void collision_dhuzzz();
     void delete_Objects();
 };
