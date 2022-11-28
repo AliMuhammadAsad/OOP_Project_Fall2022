@@ -13,6 +13,7 @@ void Lives::draw(){
         case 3: {srcRect = {2, 617, 94, 26}; moverRect.w = 90; break;}
         case 2: {srcRect = {2, 617, 62, 25}; moverRect.w = 60; break;}
         case 1: {srcRect = {2, 617, 29, 25}; moverRect.w = 30; break;}
+        case 0: {srcRect = {0, 0, 0, 0}; moverRect.w = 0; break;}
     }
     SDL_RenderCopy(Drawing::gRenderer, Drawing::assets, &srcRect, &moverRect);
 }
