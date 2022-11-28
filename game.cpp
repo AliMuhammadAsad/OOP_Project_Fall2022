@@ -158,19 +158,19 @@ bool Game::RulesScreen()
 
 
 
-// bool Game::HardScreen()
-// {
-// 	// Loading success flag
-// 	bool success = true;
-// 	screen = 6;
-// 	gTexture = loadTexture("bg.jpg");
-// 	if (gTexture == NULL)
-// 	{
-// 		printf("Unable to run due to error: %s\n", SDL_GetError());
-// 		success = false;
-// 	}
-// 	return success;
-// }
+bool Game::LevelsScreen()
+{
+	// Loading success flag
+	bool success = true;
+	screen = 5;
+	gTexture = loadTexture("LevelsScreen.png");
+	if (gTexture == NULL)
+	{
+		printf("Unable to run due to error: %s\n", SDL_GetError());
+		success = false;
+	}
+	return success;
+}
 
 bool Game::EndScreen()
 {
@@ -254,18 +254,26 @@ void Game::run( )
 			if(e.type == SDL_MOUSEBUTTONDOWN){
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
-				if (xMouse > 401 && xMouse < 498 && yMouse > 368 && yMouse < 423)
+				if (xMouse > 401 && xMouse < 498 && yMouse > 368 && yMouse < 423 && screen == 1)
 				{
-					cout << "Play" << endl;
-					PlayScreen();
+					// cout << "Play" << endl;
+					LevelsScreen();
 				}
-				if (xMouse > 381 && xMouse < 513 && yMouse > 449 && yMouse < 489)
+				if (xMouse > 381 && xMouse < 513 && yMouse > 449 && yMouse < 489 && screen == 1)
 				{
 					RulesScreen();
 				}
-				if ((xMouse >= 394 && xMouse <= 499 && yMouse >= 533 && yMouse <= 585))
+				if ((xMouse >= 394 && xMouse <= 499 && yMouse >= 533 && yMouse <= 585 && screen == 1))
 				{
 					quit = true;
+				}
+				if ((xMouse >= 501 && xMouse <= 839 && yMouse >= 229 && yMouse <= 312 && screen == 5))
+				{
+					PlayScreen();
+				}
+				if ((xMouse >= 137 && xMouse <= 477 && yMouse >= 229 && yMouse <= 312 && screen == 5))
+				{
+					PlayScreen();
 				}
 			}
 			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (screen == 2 || screen == 3 || screen == 4))
@@ -273,10 +281,10 @@ void Game::run( )
 				gTexture = loadTexture("FirstScreen.png");
 				screen = 1;
 			}
-			if (e.type == SDL_MOUSEMOTION && screen == 2 || screen == 1)
+			if (e.type == SDL_MOUSEMOTION && screen == 2 || screen == 1 || screen == 5)
 			{
 				SDL_GetMouseState(&xMouse, &yMouse);
-				cout << xMouse << " " << yMouse;
+				cout << xMouse << " " << yMouse << endl;
 				fn->checkMouseClick(xMouse, yMouse);
 			}
 			if (Mix_PlayingMusic() == 0)
