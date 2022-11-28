@@ -51,20 +51,20 @@ bool Game::init()
 				SDL_SetRenderDrawColor(Drawing::gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
 				// Initialize PNG loading
-				// int imgFlags = IMG_INIT_PNG;
-				// if (!(IMG_Init(imgFlags) & imgFlags))
-				// {
-				// 	printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
-				// 	success = false;
+				int imgFlags = IMG_INIT_PNG;
+				if (!(IMG_Init(imgFlags) & imgFlags))
+				{
+					printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+					success = false;
+				}
+				if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+				{
+					printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+					success = false;
+				}
+				// else{
+				// 	cout << "song";
 				// }
-				// if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-				// {
-				// 	printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-				// 	success = false;
-				// }
-				// // else{
-				// // 	cout << "song";
-				// // }
 			}
 		}
 	}
@@ -85,55 +85,15 @@ bool Game::loadMedia()
 		printf("Unable to run due to error: %s\n", SDL_GetError());
 		success = false;
 	}
-	// screen = 2;
-	// int fontsize = 24;
-    // int t_width = 0; // width of the loaded font-texture
-    // int t_height = 0; // height of the loaded font-texture
-    // SDL_Color text_color = {0,0,0};
-    // string fontpath = "C:/Users/Administrator/Documents/GitHub/OOP_Project_Fall2022/arial.ttf";
-    // string text = "Score: ";
-    // TTF_Font* font = TTF_OpenFont(fontpath.c_str(), fontsize);
-    // SDL_Texture* ftexture = NULL; // our font-texture
-
-    // // check to see that the font was loaded correctly
-    // if (font == NULL) {
-    //     cerr << "Failed the load the font!\n";
-    //     cerr << "SDL_TTF Error: " << TTF_GetError() << "\n";
-    // }
-    // else {
-    //     // now create a surface from the font
-    //     SDL_Surface* text_surface = TTF_RenderText_Solid(font, text.c_str(), text_color);
-
-    //     // render the text surface
-    //     if (text_surface == NULL) {
-    //         cerr << "Failed to render text surface!\n";
-    //         cerr << "SDL_TTF Error: " << TTF_GetError() << "\n";
-    //     }
-    //     else {
-    //         // create a texture from the surface
-    //         ftexture = SDL_CreateTextureFromSurface(Drawing::gRenderer, text_surface);
-
-    //         if (ftexture == NULL) {
-    //             cerr << "Unable to create texture from rendered text!\n";
-    //         }
-    //         else {
-    //             t_width = text_surface->w; // assign the width of the texture
-    //             t_height = text_surface->h; // assign the height of the texture
-
-    //             // clean up after ourselves (destroy the surface)
-    //             SDL_FreeSurface(text_surface);
-    //         }
-    //     }
-    // }
-
-	// gMusic = Mix_LoadMUS("bg_music.mp3");
-	// if (gMusic == NULL)
-	// {
-	// 	printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-	// 	success = false;
-	// }
-	// // else{
-	// // 	cout << "song";
+	
+	gMusic = Mix_LoadMUS("bg_music.mp3");
+	if (gMusic == NULL)
+	{
+		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+		success = false;
+	}
+	// else{
+	// 	cout << "song";
 	// }
 	return success;
 }
@@ -292,11 +252,11 @@ void Game::run( )
 			}
 
 			if(e.type == SDL_MOUSEBUTTONDOWN){
-			//this is a good location to add pigeon in linked list.
 				int xMouse, yMouse;
 				SDL_GetMouseState(&xMouse,&yMouse);
 				if (xMouse > 401 && xMouse < 498 && yMouse > 368 && yMouse < 423)
 				{
+					cout << "Play" << endl;
 					PlayScreen();
 				}
 				if (xMouse > 381 && xMouse < 513 && yMouse > 449 && yMouse < 489)
@@ -310,17 +270,18 @@ void Game::run( )
 			}
 			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (screen == 2 || screen == 3 || screen == 4))
 			{
-				FirstScreen();
-			}
-			{
 				gTexture = loadTexture("FirstScreen.png");
 				screen = 1;
 			}
-			if (e.type == SDL_MOUSEMOTION && screen == 2)
+			if (e.type == SDL_MOUSEMOTION && screen == 2 || screen == 1)
 			{
 				SDL_GetMouseState(&xMouse, &yMouse);
-				// cout << xMouse << " " << yMouse;
+				cout << xMouse << " " << yMouse;
 				fn->checkMouseClick(xMouse, yMouse);
+			}
+			if (Mix_PlayingMusic() == 0)
+			{
+				Mix_PlayMusic(gMusic, -1);
 			}
 		}
 
