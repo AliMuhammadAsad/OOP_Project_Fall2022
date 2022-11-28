@@ -24,6 +24,9 @@ class Game
     // The music that will be played
     Mix_Music *gMusic = NULL;
 
+    // SDL_ttf *ftexture = NULL;
+    TTF_Font* font = NULL;
+
 public:
     bool init();
     bool loadMedia();
@@ -34,6 +37,7 @@ public:
     bool FirstScreen();
     bool PlayScreen();
     bool RulesScreen();
+    // TTF_Font* TTF_OpenFont(std::string path, int size);
     // bool MediumScreen();
     // bool HardScreen();
     bool EndScreen();

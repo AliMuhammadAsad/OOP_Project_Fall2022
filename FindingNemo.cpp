@@ -190,6 +190,50 @@ void Finding_Nemo::show_score(){
     TTF_Quit();
 }
 
+
+void Finding_Nemo::show_score()
+{
+    // int fontsize = 24;
+    // int t_width = 0; // width of the loaded font-texture
+    // int t_height = 0; // height of the loaded font-texture
+    // SDL_Color text_color = {0,0,0};
+    // string fontpath = "C:/Users/Administrator/Documents/GitHub/OOP_Project_Fall2022/arial.ttf";
+    // string text = "Score: " + to_string(score);
+    // TTF_Font* font = TTF_OpenFont(fontpath.c_str(), fontsize);
+    // SDL_Texture* ftexture = NULL; // our font-texture
+
+    // // check to see that the font was loaded correctly
+    // if (font == NULL) {
+    //     cerr << "Failed the load the font!\n";
+    //     cerr << "SDL_TTF Error: " << TTF_GetError() << "\n";
+    // }
+    // else {
+    //     // now create a surface from the font
+    //     SDL_Surface* text_surface = TTF_RenderText_Solid(font, text.c_str(), text_color);
+
+    //     // render the text surface
+    //     if (text_surface == NULL) {
+    //         cerr << "Failed to render text surface!\n";
+    //         cerr << "SDL_TTF Error: " << TTF_GetError() << "\n";
+    //     }
+    //     else {
+    //         // create a texture from the surface
+    //         ftexture = SDL_CreateTextureFromSurface(grenderer, text_surface);
+
+    //         if (ftexture == NULL) {
+    //             cerr << "Unable to create texture from rendered text!\n";
+    //         }
+    //         else {
+    //             t_width = text_surface->w; // assign the width of the texture
+    //             t_height = text_surface->h; // assign the height of the texture
+
+    //             // clean up after ourselves (destroy the surface)
+    //             SDL_FreeSurface(text_surface);
+    //         }
+    //     }
+    // }
+}
+
 void Finding_Nemo::delete_Objects(){
     
     for(int s1c = 0; s1c < sharks1.size(); s1c++){ //s1c means Shark1 Check
@@ -220,32 +264,3 @@ void Finding_Nemo::delete_Objects(){
         }
     }
 }
-
-// void Finding_Nemo::display_score()
-// {
-//     TTF_Init();
-//     // this opens a font style and sets a size
-//     TTF_Font *font = TTF_OpenFont("arial.ttf", 24);
-
-//     SDL_Color White = {255, 255, 255};
-//     string tmp = to_string(score);
-//     num_char = tmp.c_str();
-
-//     SDL_Surface *surfaceMessage =
-//         TTF_RenderText_Solid(font, num_char, White);
-
-//     // now you can convert it into a texture
-//     SDL_Texture *Message = SDL_CreateTextureFromSurface(Drawing::gRenderer, surfaceMessage);
-
-//     SDL_Rect Message_rect; // create a rect
-//     Message_rect.x = 15;   // controls the rect's x coordinate
-//     Message_rect.y = 60;   // controls the rect's y coordinte
-//     Message_rect.w = 50;   // controls the width of the rect
-//     Message_rect.h = 25;   // controls the height of the rect
-
-//     SDL_RenderCopy(Drawing::gRenderer, Message, NULL, &Message_rect);
-//     SDL_FreeSurface(surfaceMessage);
-//     SDL_DestroyTexture(Message);
-//     TTF_CloseFont(font);
-//     TTF_Quit();
-// }

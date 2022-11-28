@@ -18,7 +18,6 @@ using namespace std;
 
 class Finding_Nemo{
     private:
-    char const *num_char;
     int score = 0;
     //Right now we're creating one pigeon, 
     // Dory *dory;
@@ -52,9 +51,7 @@ class Finding_Nemo{
     void draw_smallfish();
     void draw_hook();
     void draw_lives();
-    // void show_score();
     void show_score();
-    int get_score();
     void collision_dhuzzz();
     void delete_Objects();
 };
