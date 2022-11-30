@@ -13,7 +13,7 @@ class Smallfish : public Swimming_Object
     Smallfish(); 
     Smallfish(int);
     bool del_smallfish();
-    void set_to_del();
+    // void set_to_del();
     // void remove_Smallfish(); 
     // you may add other overloaded constructors here... 
 };
