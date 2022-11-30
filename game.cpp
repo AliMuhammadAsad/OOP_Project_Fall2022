@@ -264,7 +264,6 @@ void Game::run( )
 	SDL_Event e;
 
 	Finding_Nemo *fn = new Finding_Nemo();
-	auto start = high_resolution_clock::now();
 	// Finding_Nemo fn;
 	while( !quit )
 	{
@@ -335,7 +334,7 @@ void Game::run( )
 		{
 			//Hard level
 			// auto start = chrono::steady_clock::now();
-			
+			auto start = high_resolution_clock::now();
 			// auto duration = duration_cast<seconds>(stop - start);
 			// auto stop = high_resolution_clock::now();
 			// auto duration = duration_cast<seconds>(stop - start);
