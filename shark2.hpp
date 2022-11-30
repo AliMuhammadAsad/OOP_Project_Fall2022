@@ -8,11 +8,10 @@ class Shark2 : public Swimming_Object{
         SDL_Rect src, mover;
 
     public:
-        int type;
         // void draw();
-        void swim(int);
+        void swim();
         bool del_shark();
-        Shark2(int, int);
+        Shark2(int);
         // Shark2(SDL_Rect s)
         // {
         //     moverRect = s;
