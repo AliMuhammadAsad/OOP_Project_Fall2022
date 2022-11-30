@@ -9,6 +9,7 @@
 #include "shark2.hpp"
 #include "hook.hpp"
 #include "boat.hpp"
+#include "bonusfish.hpp"
 #include<vector>
 #include<list>
 #include<string>
@@ -32,6 +33,7 @@ class Finding_Nemo{
     vector<Shark*> sharks1;
     vector<Shark2*> sharks2;
     vector<Hook*> hooks;
+    vector<BonusFish*> bonusfish;
     
     public:
     Lives Life;
@@ -46,7 +48,9 @@ class Finding_Nemo{
     void create_Shark1_Easy();
     void create_Shark2_Hard();
     void create_Shark2_Medium();
+    void create_Shark2_Easy();
     void create_smallfish();
+    void create_bonusfish();
     void create_hook_Hard();
     void create_hook_Medium();
     void create_hook_Easy();
@@ -54,6 +58,7 @@ class Finding_Nemo{
     void draw_Shark1();
     void draw_Shark2();
     void draw_smallfish();
+    void draw_bonusfish();
     void draw_hook();
     void draw_lives();
     void show_score();

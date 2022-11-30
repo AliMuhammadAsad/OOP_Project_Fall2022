@@ -354,9 +354,11 @@ void Game::run( )
 				fn->draw_hook();
 				fn->create_Shark1_Hard();
 				fn->create_Shark2_Hard();
+				fn->create_bonusfish();
 				fn->draw_Shark1();
 				fn->draw_Shark2();
 				fn->draw_lives();
+				fn->draw_bonusfish();
 				fn->show_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
@@ -382,9 +384,11 @@ void Game::run( )
 				fn->draw_hook();
 				fn->create_Shark1_Medium();
 				fn->create_Shark2_Medium();
+				fn->create_bonusfish();
 				fn->draw_Shark1();
 				fn->draw_Shark2();
 				fn->draw_lives();
+				fn->draw_bonusfish();
 				fn->show_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
@@ -409,10 +413,12 @@ void Game::run( )
 				fn->create_hook_Easy();
 				fn->draw_hook();
 				fn->create_Shark1_Easy();
-				// fn->create_Shark2();
+				fn->create_Shark2_Easy();
+				fn->create_bonusfish();
 				fn->draw_Shark1();
-				// fn->draw_Shark2();
+				fn->draw_Shark2();
 				fn->draw_lives();
+				fn->draw_bonusfish();
 				fn->show_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
