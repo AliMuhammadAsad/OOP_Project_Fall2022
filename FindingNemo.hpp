@@ -28,6 +28,7 @@ class Finding_Nemo{
     // Hook h1;
     // Boat b1;
     // In the solution you have to create vectors of pigeons, eggs, and nests    
+    SDL_Window *gWindow = NULL;
     vector<Smallfish*> smallfishes;
     vector<Shark*> sharks1;
     vector<Shark2*> sharks2;
@@ -35,7 +36,8 @@ class Finding_Nemo{
     
     public:
     Lives Life;
-
+    // Smallfish s1;
+    bool paused = false;
     Finding_Nemo();
 
     // void draw_lives();

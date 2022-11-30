@@ -28,6 +28,7 @@ void Smallfish::swim(){
         // {
         //     moverRect.x = 0;
         // }
+
 }
 
 bool Smallfish::del_smallfish(){

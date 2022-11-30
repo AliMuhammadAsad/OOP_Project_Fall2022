@@ -15,6 +15,7 @@ class Smallfish : public Swimming_Object
     bool del_smallfish();
     // void set_to_del();
     // void remove_Smallfish(); 
+    // bool paused = false;
     // you may add other overloaded constructors here... 
 };
 

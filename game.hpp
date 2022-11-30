@@ -27,6 +27,8 @@ class Game
     // SDL_ttf *ftexture = NULL;
     TTF_Font* font = NULL;
 
+    bool loadFromRenderedText( std::string textureText, SDL_Color textColor );
+
 public:
     bool init();
     bool loadMedia();
@@ -43,4 +45,5 @@ public:
     bool EasyScreen();
     bool MediumScreen();
     bool EndScreen();
+    bool ClueScreen();
 };

@@ -7,7 +7,12 @@
 // #include <SDL_ttf.h>
 
 SDL_Renderer *Drawing::gRenderer = NULL;
+SDL_Renderer *Drawing::hRenderer = NULL;
 SDL_Texture *Drawing::assets = NULL;
+
+Game gPromptTextTexture;
+Game gInputTextTexture;
+
 static int screen;
 
 bool Game::init()
@@ -206,6 +211,8 @@ bool Game::EndScreen()
 	return success;
 }
 
+
+
 void Game::close()
 {
 	// Free loaded images
@@ -255,17 +262,16 @@ void Game::run( )
 {
 	bool quit = false;
 	SDL_Event e;
+	int xMouse, yMouse;
 
 	Finding_Nemo *fn = new Finding_Nemo();
-	// Finding_Nemo fn;
 	while( !quit )
 	{
 		int xMouse, yMouse;
 		//Handle events on queue
 		while( SDL_PollEvent( &e ) != 0 )
 		{
-			//int xMouse, yMouse;
-			//User requests quit
+			
 			if( e.type == SDL_QUIT )
 			{
 				quit = true;
@@ -300,15 +306,28 @@ void Game::run( )
 					EasyScreen();
 				}
 			}
-			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (screen == 2 || screen == 3 || screen == 4 || screen == 6 || screen == 7))
+			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && (screen == 2 || screen == 3 || screen == 4 || screen == 6 || screen == 7 || screen == 10))
 			{
 				gTexture = loadTexture("FirstScreen.png");
 				screen = 1;
 			}
+			if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_p && (screen == 2 || screen == 6 || screen == 7))
+			{
+				if (fn->paused == false)
+				{
+					fn->paused = true;
+					cout << "Paused! You can catch your breath" << endl;
+				}
+				else if (fn->paused == true) 
+				{
+					fn->paused = false;
+					cout << "Unpaused! Let's find Nemo" << endl;
+				}
+			}
 			if (e.type == SDL_MOUSEMOTION && screen == 2 || screen == 1 || screen == 5 || screen == 6 || screen == 7)
 			{
 				SDL_GetMouseState(&xMouse, &yMouse);
-				cout << xMouse << " " << yMouse << endl;
+				// cout << xMouse << " " << yMouse << endl;
 				fn->checkMouseClick(xMouse, yMouse);
 			}
 			if (Mix_PlayingMusic() == 0)
@@ -320,7 +339,7 @@ void Game::run( )
 		SDL_RenderClear(Drawing::gRenderer); //removes everything from renderer
 		SDL_RenderCopy(Drawing::gRenderer, gTexture, NULL, NULL);//Draws background to renderer
 		//***********************draw the objects here********************
-		if (fn->Life.life > 0)
+		if (fn->Life.life > 0 && fn->paused == false)
 		{
 			//Hard level
 			if (screen == 2)
@@ -377,13 +396,23 @@ void Game::run( )
 				fn->delete_Objects();
 			}
 		}
-		else EndScreen();
+		else 
+		{
+			if (fn->Life.life <= 0)
+			{
+				EndScreen();
+				fn->Life.life = 3;
+			}
+		}
+		
 		//****************************************************************
-    	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
-
+		if(fn->paused == false)SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
+		
 	    SDL_Delay(100);	//causes sdl engine to delay for specified miliseconds
 	}
 			
 }
+
+
 
 
