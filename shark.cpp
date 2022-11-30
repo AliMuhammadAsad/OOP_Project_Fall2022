@@ -9,28 +9,35 @@
 //     // SDL_RenderCopy(gRenderer, assets, &pigeon.srcRect, &pigeon.moverRect);
 // }
 
-Shark::Shark(int x, int y) : Swimming_Object({34, 1867, 188, 101}, {x, y, 100, 100}) {}
+Shark::Shark(int y) : Swimming_Object({34, 1867, 188, 101}, {0, y, 100, 100}) {}
 
-void Shark::swim(int type){
+void Shark::swim(){
     // you have to do flying animations here
-        // moverRect.x+=5;
+        // if (screen == 2)
+        // {
+            moverRect.x+=5;
+        // }
+        // else if (screen == 6)
+        // {
+            // moverRect.x+=10;
+        // }
         // switch(frame){
         //     case 0: srcRect = {34, 1867, 188, 101}; frame = 1; break;
         //     case 1: srcRect = {292, 1867, 200, 101}; frame = 2; break;
         //     case 2: srcRect = {566, 1867, 200, 101}; frame = 0; break;
         // }
         int z = moverRect.x % 3;
-        if(type == 0){
-            if (z==0) srcRect = {34, 1867, 188, 101};
-            else if (z==1) srcRect = {292, 1867, 200, 101};
-            else if (z==2) srcRect = {566, 1867, 200, 101};
-            moverRect.x += 5;
+        if (z==0)
+        {
+            srcRect = {34, 1867, 188, 101};
         }
-        else if(type == 1){
-            if(z == 0) srcRect = {1372, 2140, 188, 101};
-            else if(z == 1) srcRect = {1160, 2139, 200, 101};
-            else if(z == 2) srcRect = {942, 2143, 200, 101};
-            moverRect.x -= 5;
+        if (z==1)
+        {
+            srcRect = {292, 1867, 200, 101};
+        }
+        if (z==2)
+        {
+            srcRect = {566, 1867, 200, 101};
         }
         // if (moverRect.x > 1000) // rotates pigeon across the screen
         // {
@@ -40,7 +47,7 @@ void Shark::swim(int type){
 }
 
 bool Shark::del_shark(){
-    if(moverRect.x > 1000 || moverRect.x < 0) return true;
+    if(moverRect.x >= 1000) return true;
     else return false;
 }
 

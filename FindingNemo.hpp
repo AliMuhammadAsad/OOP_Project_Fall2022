@@ -3,7 +3,6 @@
 #include "swimming_object.hpp"
 #include "Dory.hpp"
 #include "smallfish.hpp"
-#include "bonusfish.hpp"
 #include "lives.hpp"
 #include "score.hpp"
 #include "shark.hpp"
@@ -30,7 +29,6 @@ class Finding_Nemo{
     // Boat b1;
     // In the solution you have to create vectors of pigeons, eggs, and nests    
     vector<Smallfish*> smallfishes;
-    vector<BonusFish*> bonusfish;
     vector<Shark*> sharks1;
     vector<Shark2*> sharks2;
     vector<Hook*> hooks;
@@ -43,16 +41,19 @@ class Finding_Nemo{
     // void draw_lives();
     void checkMouseClick(int, int);
     void createObject(int, int);
-    void create_Shark1();
-    void create_Shark2();
+    void create_Shark1_Hard();
+    void create_Shark1_Medium();
+    void create_Shark1_Easy();
+    void create_Shark2_Hard();
+    void create_Shark2_Medium();
     void create_smallfish();
-    void create_bonusfish();
-    void create_hook();
+    void create_hook_Hard();
+    void create_hook_Medium();
+    void create_hook_Easy();
     void draw_Objects(); 
     void draw_Shark1();
     void draw_Shark2();
     void draw_smallfish();
-    void draw_bonusfish();
     void draw_hook();
     void draw_lives();
     void show_score();

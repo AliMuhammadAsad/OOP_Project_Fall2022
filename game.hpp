@@ -35,11 +35,12 @@ public:
     SDL_Texture *loadTexture(std::string path);
     void run();
     bool FirstScreen();
-    bool PlayScreen();
+    bool HardScreen();
     bool RulesScreen();
     bool LevelsScreen();
     // TTF_Font* TTF_OpenFont(std::string path, int size);
     // bool MediumScreen();
-    // bool HardScreen();
+    bool EasyScreen();
+    bool MediumScreen();
     bool EndScreen();
 };

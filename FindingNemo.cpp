@@ -39,16 +39,7 @@ void Finding_Nemo::create_smallfish()
     }
 }
 
-void Finding_Nemo::create_bonusfish(){
-    int n = rand() % 550;
-    int p = rand() % 200;
-    if(p == 1){
-        BonusFish *b1 = new BonusFish(n);
-        bonusfish.push_back(b1);
-    }
-}
-
-void Finding_Nemo::create_hook()
+void Finding_Nemo::create_hook_Hard()
 {
     int n = rand() % 550;
     int p = rand() % 30; //probability of generation
@@ -59,55 +50,77 @@ void Finding_Nemo::create_hook()
     }
 }
 
-void Finding_Nemo::create_Shark1(){
-    int y_cord = rand() % 550;
-    int prob_gen = rand() % 50;
-    int t = rand() % 2;
-    if(prob_gen == 1){
-        if(t == 0){
-            Shark* shark = new Shark(0, y_cord);
-            shark->type = 0;
-            sharks1.push_back(shark);
-        }
-        else if(t == 1){
-            Shark* shark = new Shark(1000, y_cord);
-            shark->type = 1;
-            sharks1.push_back(shark);
-        }
+void Finding_Nemo::create_hook_Medium()
+{
+    int n = rand() % 550;
+    int p = rand() % 50; //probability of generation
+    if (p == 1)
+    {
+        Hook *h1 = new Hook(n); //dynamically creating objects
+        hooks.push_back(h1); //pushing back objects
     }
 }
 
-void Finding_Nemo::create_Shark2(){
-    int y_cord = rand() % 550;
-    int prob_gen = rand() % 50;
-    int t = rand() % 2;
-    if(prob_gen == 1){
-        if(t == 0){
-            Shark2* shark = new Shark2(0, y_cord);
-            shark->type = 0;
-            sharks2.push_back(shark);
-        }
-        else if(t == 1){
-            Shark2* shark = new Shark2(1000, y_cord);
-            shark->type = 1;
-            sharks2.push_back(shark);
-        }
+void Finding_Nemo::create_hook_Easy()
+{
+    int n = rand() % 550;
+    int p = rand() % 70; //probability of generation
+    if (p == 1)
+    {
+        Hook *h1 = new Hook(n); //dynamically creating objects
+        hooks.push_back(h1); //pushing back objects
     }
 }
 
+void Finding_Nemo::create_Shark1_Hard(){
+    int y_cord = rand() % 550;
+    int prob_gen = rand() % 50;
+    if(prob_gen == 1){
+        Shark* shark = new Shark(y_cord);
+        sharks1.push_back(shark);
+    }
+}
+
+void Finding_Nemo::create_Shark1_Medium(){
+    int y_cord = rand() % 550;
+    int prob_gen = rand() % 65;
+    if(prob_gen == 1){
+        Shark* shark = new Shark(y_cord);
+        sharks1.push_back(shark);
+    }
+}
+void Finding_Nemo::create_Shark1_Easy(){
+    int y_cord = rand() % 550;
+    int prob_gen = rand() % 80;
+    if(prob_gen == 1){
+        Shark* shark = new Shark(y_cord);
+        sharks1.push_back(shark);
+    }
+}
+
+void Finding_Nemo::create_Shark2_Hard(){
+    int y_cord = rand() % 550;
+    int prob_gen = rand() % 50;
+    if(prob_gen == 1){
+        Shark2* shark = new Shark2(y_cord);
+        sharks2.push_back(shark);
+    }
+}
+
+void Finding_Nemo::create_Shark2_Medium(){
+    int y_cord = rand() % 550;
+    int prob_gen = rand() % 75;
+    if(prob_gen == 1){
+        Shark2* shark = new Shark2(y_cord);
+        sharks2.push_back(shark);
+    }
+}
 /*--------------------------------------------------------------------------------------------------------------*/
 //Drawing Section - Here life was breathed into our molds and objects, and henceforth they sprang with life and swam with joy exploring the vastness of the world's oceans 
 
 void Finding_Nemo::draw_Objects()
 {
-    // call draw functions of all the objects here
-    // if (screen == 1)
     dory->draw();
-    // sh1.draw();
-    // sh1.swim();
-    // sh2.draw();
-    // sh2.swim();
- 
 }
 
 void Finding_Nemo::draw_smallfish()
@@ -116,13 +129,6 @@ void Finding_Nemo::draw_smallfish()
     {
         s1->draw(); // calling the draw functionality in the small asteroids
         s1->swim();  // calling the fly functionality in the fly function
-    }
-}
-
-void Finding_Nemo::draw_bonusfish(){
-    for(auto &b1 : bonusfish){
-        b1->draw();
-        b1->swim();
     }
 }
 
@@ -145,14 +151,23 @@ void Finding_Nemo::draw_Shark1(){
     // }
     for(auto &s1 : sharks1){
         s1->draw(); 
-        s1->swim(s1->type);
+        s1->swim();
     }
 }
 
+// void Finding_Nemo::draw_Shark1_Easy(){
+//     // for(int i = 0; i < sharks1.size(); i++){
+//     //     sharks1[i]->draw(); sharks1[i]->swim();
+//     // }
+//     for(auto &s1 : sharks1){
+//         s1->draw(); 
+//         s1->swim();
+//     }
+// }
+
 void Finding_Nemo::draw_Shark2(){
-    for(auto &s2 : sharks2){
-        s2->draw();
-        s2->swim(s2->type);
+    for(int i = 0; i < sharks2.size(); i++){
+        sharks2[i]->draw(); sharks2[i]->swim();
     }
 }
 
@@ -186,7 +201,7 @@ void Finding_Nemo::collision_dhuzzz(){
         }
     }
 
-    //Collission with smallfishes
+    //Collision with smallfishes
     for(auto &sfc : smallfishes){
         SDL_Rect sf = sfc->getMov();
         if(SDL_HasIntersection(&dor, &sf)){
@@ -194,17 +209,6 @@ void Finding_Nemo::collision_dhuzzz(){
             score += 10;
             sfc->set_to_del();
             cout <<"Your score is: " << score << endl;
-        }
-    }
-
-    //Collision with Bonus Fish
-    for(auto &bfc : bonusfish){
-        SDL_Rect bf = bfc->getMov();
-        if(SDL_HasIntersection(&dor, &bf)){
-            cout << "Dory has collided with the bonus fish. Bonus fish helps dory, score + 50\n";
-            score += 50;
-            bfc->set_to_del();
-            cout << "Your score is: " << score << endl;
         }
     }
 
@@ -257,13 +261,6 @@ void Finding_Nemo::delete_Objects(){
         if(smallfishes[sfc]->del_smallfish() == true){
             delete smallfishes[sfc]; smallfishes.erase(smallfishes.begin() + sfc);
             cout << "Smallfish has been deleted. It will now float alone in the endless void for eternity.\n";
-        }
-    }
-
-    for(int bfc = 0; bfc<bonusfish.size(); bfc++){
-        if(bonusfish[bfc]->del_bonusfish() == true){
-            delete bonusfish[bfc]; bonusfish.erase(bonusfish.begin() + bfc);
-            cout << "Bonus Fish has been deleted. It will now float in the endless void for eternity.\n";
         }
     }
 
