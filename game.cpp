@@ -4,6 +4,12 @@
 #include <vector>
 #include <time.h>
 #include <iostream>
+#include <chrono>
+#include <unistd.h>
+#include <ctime>
+using namespace std;
+using namespace std::chrono;
+ 
 // #include <SDL_ttf.h>
 
 SDL_Renderer *Drawing::gRenderer = NULL;
@@ -127,6 +133,7 @@ bool Game::HardScreen()
 bool Game::MediumScreen()
 {
 	// Loading success flag
+	// auto start = high_resolution_clock::now();
 	bool success = true;
 	screen = 7;
 	gTexture = loadTexture("bg.png");
@@ -260,6 +267,8 @@ void Game::run( )
 	// Finding_Nemo fn;
 	while( !quit )
 	{
+		// auto stop = high_resolution_clock::now();
+		// auto duration = duration_cast<microseconds>(stop - start);
 		int xMouse, yMouse;
 		//Handle events on queue
 		while( SDL_PollEvent( &e ) != 0 )
@@ -285,6 +294,7 @@ void Game::run( )
 				}
 				if (xMouse >= 394 && xMouse <= 499 && yMouse >= 533 && yMouse <= 585 && screen == 1)
 				{
+					// auto stop = high_resolution_clock::now();
 					quit = true;
 				}
 				if (xMouse >= 615 && xMouse <= 859 && yMouse >= 280 && yMouse <= 345 && screen == 5)
@@ -323,6 +333,17 @@ void Game::run( )
 		if (fn->Life.life > 0)
 		{
 			//Hard level
+			// auto start = chrono::steady_clock::now();
+			auto start = high_resolution_clock::now();
+			// auto duration = duration_cast<seconds>(stop - start);
+			// auto stop = high_resolution_clock::now();
+			// auto duration = duration_cast<seconds>(stop - start);
+			// cout << "time: " << duration.count() << endl;
+			// cout << (chrono::duration_cast<chrono::nanoseconds>start.count() > 180) << endl;
+			// {
+			// 	cout << "Game end!!!" << endl;
+			// 	quit = true;
+			// }
 			if (screen == 2)
 			{
 				fn->createObject(xMouse, yMouse);
@@ -339,6 +360,16 @@ void Game::run( )
 				fn->show_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
+				auto stop = high_resolution_clock::now();
+				auto duration = duration_cast<seconds>(stop - start);
+				cout << "time: " << duration.count() << endl;
+		// 		if (SDL_Delay(180000))
+		// `		{
+		// 			cout << "Game end!!!" << endl;
+		// 		}
+				// auto stop = high_resolution_clock::now();
+				// auto duration = duration_cast<seconds>(stop - start);
+				// cout << "time: " << duration.count() << endl;
 			}
 			// Medium Level
 			if (screen == 7)
@@ -357,6 +388,16 @@ void Game::run( )
 				fn->show_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
+				auto stop = high_resolution_clock::now();
+				auto duration = duration_cast<seconds>(stop - start);
+				cout << "time: " << duration.count() << endl;
+		// 		if (SDL_Delay(180000))
+		// `		{
+		// 			cout << "Game end!!!" << endl;
+		// 		}
+				// auto stop = high_resolution_clock::now();
+				// auto duration = duration_cast<seconds>(stop - start);
+				// cout << "time: " << duration.count() << endl;
 			}
 			// Easy Level
 			if (screen == 6)
@@ -375,9 +416,22 @@ void Game::run( )
 				fn->show_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
+				auto stop = high_resolution_clock::now();
+				auto duration = duration_cast<seconds>(stop - start);
+				cout << "time: " << duration.count() << endl;
+		// 		if (SDL_Delay(180000))
+		// `		{
+		// 			cout << "Game end!!!" << endl;
+		// 		}
+				// auto stop = high_resolution_clock::now();
+				// auto duration = duration_cast<seconds>(stop - start);
+				// cout << "time: " << duration.count() << endl;
 			}
 		}
-		else EndScreen();
+		else 
+		{
+			EndScreen();
+		}
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
 
