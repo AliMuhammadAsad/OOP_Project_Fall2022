@@ -304,6 +304,8 @@ void Game::run( )
 				fn->draw_Objects();
 				fn->create_smallfish();
 				fn->draw_smallfish();
+				fn->create_bonusfish();
+				fn->draw_bonusfish();
 				fn->create_hook();
 				fn->draw_hook();
 				fn->create_Shark1();

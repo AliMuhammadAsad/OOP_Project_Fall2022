@@ -11,7 +11,7 @@ private:
 public:
     void swim();
     bool del_hook();
-    // void set_to_del();
+    void set_to_del();
     Hook();
     Hook(int);
     // you may add other overloaded constructors here... 

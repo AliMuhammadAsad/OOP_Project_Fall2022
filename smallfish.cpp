@@ -12,18 +12,9 @@ void Smallfish::swim(){
        moverRect.x+=5;
        moverRect.y+=1;
        int z = moverRect.x % 3;
-        if (z==0)
-        {
-            srcRect = {954,1535,28,21};
-        }
-        if (z==1)
-        {
-            srcRect = {1000, 1534, 30, 21};
-        }
-        if (z==2)
-        {
-            srcRect = {1048, 1532, 30, 21};
-        }
+        if (z==0) srcRect = {954,1535,28,21};
+        if (z==1) srcRect = {1000, 1534, 30, 21};
+        if (z==2) srcRect = {1048, 1532, 30, 21};
         // if (moverRect.x > 1000) // rotates pigeon across the screen
         // {
         //     moverRect.x = 0;
@@ -35,9 +26,9 @@ bool Smallfish::del_smallfish(){
     else return false;
 }
 
-// void Smallfish::set_to_del(){
-//     moverRect = {1100, 600, 30, 40};
-// }
+void Smallfish::set_to_del(){
+    moverRect = {1100, 600, 30, 40};
+}
 // deleting memory
 // void Smallfish::remove_smallfish() //removing bullets
 // {
