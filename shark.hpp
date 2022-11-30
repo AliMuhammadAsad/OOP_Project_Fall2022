@@ -5,14 +5,13 @@
 #pragma once
 
 class Shark : public Swimming_Object{
-    protected:
+    private:
         SDL_Rect src, mover;
     public:
-        int type;
         // void draw();
-        void swim(int);
+        void swim();
         Shark();
-        Shark(int, int);
+        Shark(int);
         bool del_shark();
         // Shark(SDL_Rect s)
         // {
