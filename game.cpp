@@ -286,7 +286,7 @@ void Game::run( )
 	// time->Start();
 	// time->show_time();
 	// int time_left = 180;
-	auto start = high_resolution_clock::now();
+
 	// Finding_Nemo fn;
 	auto start = high_resolution_clock::now();
 	while( !quit )
@@ -387,17 +387,9 @@ void Game::run( )
 				fn->text_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
-				auto stop = high_resolution_clock::now();
-				auto duration = duration_cast<seconds>(stop - start);
-				cout << "time: " << duration.count() << endl;
-				if (fn->get_score() >= 100 && duration.count() <=100)
-				{
-					WinningScreen();
-				}
-				else if (fn->get_score() <= 100 && duration.count() >= 100)
-				{
-					EndScreen();
-				}
+				// auto stop = high_resolution_clock::now();
+				// auto duration = duration_cast<seconds>(stop - start);
+				// cout << "time: " << duration.count() << endl;
 				// time->Start();
 				// time->show_time();
 				// time->Start();
@@ -412,6 +404,14 @@ void Game::run( )
 				int t = 185 - duration.count();
 				cout << "You have " << t << " seconds left\n";
 				show_time(t);
+				if (fn->get_score() >= 100 && duration.count() <=100)
+				{
+					WinningScreen();
+				}
+				else if (fn->get_score() <= 100 && duration.count() >= 100)
+				{
+					EndScreen();
+				}
 		// 		if (SDL_Delay(180000))
 		// `		{
 		// 			cout << "Game end!!!" << endl;
@@ -485,24 +485,17 @@ void Game::run( )
 				auto stop = high_resolution_clock::now();
 				auto duration = duration_cast<seconds>(stop - start);
 				cout << "time: " << duration.count() << endl;
-				if (fn->get_score() >= 100 && duration.count() <=100)
+				if (fn->get_score() >= 100 && duration.count() <=185)
 				{
 					WinningScreen();
 				}
-				else if (fn->get_score() <= 100 && duration.count() >= 100)
+				else if (fn->get_score() <= 100 && duration.count() >= 185)
 				{
 					EndScreen();
 				}
 				int t = 185 - duration.count();
 				cout << "You have " << t << " seconds left\n";
 				show_time(t);
-		// 		if (SDL_Delay(180000))
-		// `		{
-		// 			cout << "Game end!!!" << endl;
-		// 		}
-				// auto stop = high_resolution_clock::now();
-				// auto duration = duration_cast<seconds>(stop - start);
-				// cout << "time: " << duration.count() << endl;
 			}
 		}
 		else 
