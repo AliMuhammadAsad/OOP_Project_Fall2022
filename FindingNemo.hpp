@@ -14,6 +14,9 @@
 #include<list>
 #include<string>
 #include<SDL_ttf.h>
+#include<thread>
+#include <chrono>
+#include <iomanip>
 #pragma once
 using namespace std;
 
@@ -34,13 +37,15 @@ class Finding_Nemo{
     vector<Shark2*> sharks2;
     vector<Hook*> hooks;
     vector<BonusFish*> bonusfish;
-    
+    // int seconds = 180;
     public:
     Lives Life;
+    // Timer timer;
 
     Finding_Nemo();
 
     // void draw_lives();
+    // void timer();
     void checkMouseClick(int, int);
     void createObject(int, int);
     void create_Shark1_Hard();
@@ -62,6 +67,22 @@ class Finding_Nemo{
     void draw_hook();
     void draw_lives();
     void show_score();
+    void text_score();
     void collision_dhuzzz();
     void delete_Objects();
+    // void start_time();
+    // void show_time();
 };
+
+// class Timer{
+//     private:
+//     int seconds = 180;
+//     public:
+//     void Start(){
+//         std::this_thread::sleep_for(1s);
+//         seconds = seconds - 1;
+//     }
+//     void show_time(){
+//         cout << "You have " << seconds << " seconds left.\n";
+//     }
+// };

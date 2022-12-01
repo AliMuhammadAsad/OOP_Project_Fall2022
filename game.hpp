@@ -43,4 +43,5 @@ public:
     bool EasyScreen();
     bool MediumScreen();
     bool EndScreen();
+    void show_time(int);
 };
