@@ -21,6 +21,3 @@ void Lives::draw(){
 void Lives::operator--(){
     life = life - 1;
 }
-void Lives::operator++(){
-    life = life + 1;
-}

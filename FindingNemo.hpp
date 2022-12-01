@@ -23,36 +23,24 @@ using namespace std;
 class Finding_Nemo{
     private:
     int score = 0;
-    //Right now we're creating one pigeon, 
-    // Dory *dory;
     Dory *dory;
-    // Smallfish s1;
-    // Shark sh1;
-    // Shark2 sh2;
-    // Hook h1;
-    // Boat b1;
-    // In the solution you have to create vectors of pigeons, eggs, and nests    
+
     SDL_Window *gWindow = NULL;
     vector<Smallfish*> smallfishes;
     vector<Shark*> sharks1;
     vector<Shark2*> sharks2;
     vector<Hook*> hooks;
     vector<BonusFish*> bonusfish;
-    // int seconds = 180;
+    
     public:
+    
     Lives Life;
-    // Score s;
-    // Smallfish s1;
     bool paused = false;
     bool riddle = false;
     bool correct = false;
-    // Timer timer;
-
     Finding_Nemo();
-
-    // void draw_lives();
-    // void timer();
     void checkMouseClick(int, int);
+    
     void createObject(int, int);
     void create_Shark1_Hard();
     void create_Shark1_Medium();
@@ -65,6 +53,7 @@ class Finding_Nemo{
     void create_hook_Hard();
     void create_hook_Medium();
     void create_hook_Easy();
+    
     void draw_Objects(); 
     void draw_Shark1();
     void draw_Shark2();
@@ -72,10 +61,13 @@ class Finding_Nemo{
     void draw_bonusfish();
     void draw_hook();
     void draw_lives();
+    
     void show_score();
     void text_score();
+    
     void collision_dhuzzz();
     void delete_Objects();
+    
     int get_score();
 };
     

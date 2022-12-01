@@ -428,10 +428,6 @@ void Game::run( )
 	int xMouse, yMouse;
 
 	Finding_Nemo *fn = new Finding_Nemo();
-	// Timer *time = new Timer();
-	// time->Start();
-	// time->show_time();
-	// int time_left = 180;
 
 	// Finding_Nemo fn;
 	auto start = high_resolution_clock::now();
@@ -466,7 +462,6 @@ void Game::run( )
 				if (xMouse >= 615 && xMouse <= 859 && yMouse >= 280 && yMouse <= 345 && screen == 5)
 				{
 					HardScreen();
-					// auto start = high_resolution_clock::now();
 				}
 				if (xMouse >= 355 && xMouse <= 600 && yMouse >= 280 && yMouse <= 345 && screen == 5)
 				{
@@ -554,16 +549,6 @@ void Game::run( )
 					else if (sc == 13){gTexture = loadTexture("R5.png");screen =13;fn->riddle == false;}
 				}   */
 				fn->delete_Objects();
-				// auto stop = high_resolution_clock::now();
-				// auto duration = duration_cast<seconds>(stop - start);
-				// cout << "time: " << duration.count() << endl;
-				// time->Start();
-				// time->show_time();
-				// time->Start();
-				// time->show_time();
-				// fn->timer();
-				// fn->start_time();
-				// fn->show_time();
 				auto stop = high_resolution_clock::now();
 				auto duration = duration_cast<seconds>(stop - start);
 				// time_left = time_left - duration.count();
@@ -579,21 +564,14 @@ void Game::run( )
 				int t = 185 - duration.count();
 				cout << "You have " << t << " seconds left\n";
 				show_time(t);
-				if (fn->get_score() >= 100 && duration.count() <=100)
+				if (fn->get_score() >= 150 && duration.count() <=185)
 				{
 					WinningScreen();
 				}
-				else if (fn->get_score() <= 100 && duration.count() >= 100)
+				else if (fn->get_score() <= 150 && duration.count() >= 185)
 				{
 					EndScreen();
 				}
-		// 		if (SDL_Delay(180000))
-		// `		{
-		// 			cout << "Game end!!!" << endl;
-		// 		}
-				// auto stop = high_resolution_clock::now();
-				// auto duration = duration_cast<seconds>(stop - start);
-				// cout << "time: " << duration.count() << endl;
 			}
 			// Medium Level
 			if (screen == 7)
@@ -627,32 +605,17 @@ void Game::run( )
 				auto stop = high_resolution_clock::now();
 				auto duration = duration_cast<seconds>(stop - start);
 				cout << "time: " << duration.count() << endl;
-				if (fn->get_score() >= 100 && duration.count() <=180)
+				if (fn->get_score() >= 150 && duration.count() <=185)
 				{
 					WinningScreen();
 				}
-				else if (fn->get_score() <= 100 && duration.count() >= 180)
+				else if (fn->get_score() <= 150 && duration.count() >= 185)
 				{
 					EndScreen();
 				}
-				/* if (fn->get_score() >= 100 && duration.count() <=100)
-				{
-					WinningScreen();
-				}
-				else if (fn->get_score() <= 100 && duration.count() >= 100)
-				{
-					EndScreen();
-				} */
 				int t = 185 - duration.count();
 				cout << "You have " << t << " seconds left\n";
 				show_time(t);
-		// 		if (SDL_Delay(180000))
-		// `		{
-		// 			cout << "Game end!!!" << endl;
-		// 		}
-				// auto stop = high_resolution_clock::now();
-				// auto duration = duration_cast<seconds>(stop - start);
-				// cout << "time: " << duration.count() << endl;
 			}
 			// Easy Level
 			if (screen == 6)
@@ -686,22 +649,12 @@ void Game::run( )
 				auto stop = high_resolution_clock::now();
 				auto duration = duration_cast<seconds>(stop - start);
 				cout << "time: " << duration.count() << endl;
-				if (fn->get_score() >= 100 && duration.count() <=185)
-				{
+				if (fn->get_score() >= 150 && duration.count() <=185){
 					WinningScreen();
 				}
-				else if (fn->get_score() <= 100 && duration.count() >= 185)
-				{
+				else if (fn->get_score() <= 150 && duration.count() >= 185){
 					EndScreen();
 				}
-				/* if (fn->get_score() >= 100 && duration.count() <=100)
-				{
-					WinningScreen();
-				}
-				else if (fn->get_score() <= 100 && duration.count() >= 100)
-				{
-					EndScreen();
-				} */
 		
 				int t = 185 - duration.count();
 				cout << "You have " << t << " seconds left\n";

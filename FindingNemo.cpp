@@ -10,63 +10,47 @@ Finding_Nemo::Finding_Nemo(){
     dory = new Dory();
 }
 
-void Finding_Nemo::checkMouseClick(int x, int y)
-{
-    // dory->setMov(x, y);
+void Finding_Nemo::checkMouseClick(int x, int y){
     dory->setMov(x, y);
 }
-
-// Finding_Nemo::Finding_Nemo(){ //constructor for Finding_Nemo
-//     dory = new Dory(); // This dynamically creates one obj of Dory 
-// }
-
 /*--------------------------------------------------------------------------------------------------------------*/
 //The Big Bang - Here creation of our objects first began and we made molds of what we wanted to create
 
-void Finding_Nemo::createObject(int x, int y)
-{
-    // cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
+void Finding_Nemo::createObject(int x, int y){
+    cout << "Mouse clicked at: " << x << " -- " << y << std::endl;
 }
 
-void Finding_Nemo::create_smallfish()
-{
+void Finding_Nemo::create_smallfish(){
     int n = rand() % 550;
     int p = rand() % 30; //probability of generation
-    if (p == 1)
-    {
+    if (p == 1){
         Smallfish *s1 = new Smallfish(n); //dynamically creating objects
         smallfishes.push_back(s1); //pushing back objects
     }
 }
 
-void Finding_Nemo::create_hook_Hard()
-{
+void Finding_Nemo::create_hook_Hard(){
     int n = rand() % 550;
     int p = rand() % 30; //probability of generation
-    if (p == 1)
-    {
+    if (p == 1){
         Hook *h1 = new Hook(n); //dynamically creating objects
         hooks.push_back(h1); //pushing back objects
     }
 }
 
-void Finding_Nemo::create_hook_Medium()
-{
+void Finding_Nemo::create_hook_Medium(){
     int n = rand() % 550;
     int p = rand() % 50; //probability of generation
-    if (p == 1)
-    {
+    if (p == 1){
         Hook *h1 = new Hook(n); //dynamically creating objects
         hooks.push_back(h1); //pushing back objects
     }
 }
 
-void Finding_Nemo::create_hook_Easy()
-{
+void Finding_Nemo::create_hook_Easy(){
     int n = rand() % 550;
     int p = rand() % 70; //probability of generation
-    if (p == 1)
-    {
+    if (p == 1){
         Hook *h1 = new Hook(n); //dynamically creating objects
         hooks.push_back(h1); //pushing back objects
     }
@@ -175,13 +159,11 @@ void Finding_Nemo::create_bonusfish(){
 /*--------------------------------------------------------------------------------------------------------------*/
 //Drawing Section - Here life was breathed into our molds and objects, and henceforth they sprang with life and swam with joy exploring the vastness of the world's oceans 
 
-void Finding_Nemo::draw_Objects()
-{
+void Finding_Nemo::draw_Objects(){
     dory->draw();
 }
 
-void Finding_Nemo::draw_smallfish()
-{
+void Finding_Nemo::draw_smallfish(){
     for (auto &s1 : smallfishes) // initializing small fish
     {
         s1->draw(); // calling the draw functionality in the small asteroids
@@ -189,18 +171,13 @@ void Finding_Nemo::draw_smallfish()
     }
 }
 
-void Finding_Nemo::draw_hook()
-{
+void Finding_Nemo::draw_hook(){
     for (auto &h1 : hooks) // initializing small fish
     {
         h1->draw(); // calling the draw functionality in the small asteroids
         h1->swim();  // calling the fly functionality in the fly function
     }
 }
-
-// void Finding_Nemo::draw_lives(){
-//     Life.draw();
-// }
 
 void Finding_Nemo::draw_Shark1(){
     for(auto &s1 : sharks1){
@@ -276,7 +253,7 @@ void Finding_Nemo::collision_dhuzzz(){
         if(SDL_HasIntersection(&dor, &bf)){
             cout << "Dory has interacted with the bonus fish\n";
             // paused = true;
-            score += 50; //++Life;
+            score += 30; //++Life;
             /* riddle = true;
             if(correct == true){
                 score += 50; //++Life;
@@ -317,8 +294,6 @@ void Finding_Nemo::text_score(){
     TTF_CloseFont(font);
     TTF_Quit();
 }
-
-
 
 void Finding_Nemo::delete_Objects(){
     

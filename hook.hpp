@@ -3,16 +3,13 @@
 #include "swimming_object.hpp"
 #pragma once
 
-class Hook : public Swimming_Object
-{
-private:
+class Hook : public Swimming_Object{
+    private:
     SDL_Rect src, mover;
 
-public:
+    public:
     void swim();
     bool del_hook();
-    // void set_to_del();
     Hook();
     Hook(int);
-    // you may add other overloaded constructors here... 
 };

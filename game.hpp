@@ -10,8 +10,7 @@
 #include "FindingNemo.hpp"
 // #include "score.hpp"
 
-class Game
-{
+class Game{
     // Screen dimension constants
     const int SCREEN_WIDTH = 939;
     const int SCREEN_HEIGHT = 626;
@@ -34,28 +33,32 @@ class Game
 
     bool loadFromRenderedText( std::string textureText, SDL_Color textColor );
 
-public:
+    public:
     bool init();
     bool loadMedia();
-    // SDL_Texture *Mix_LoadMUS(std::string path);
+    
     void close();
+    
     SDL_Texture *loadTexture(std::string path);
+    
     void run();
+    
     bool FirstScreen();
     bool HardScreen();
     bool RulesScreen();
     bool LevelsScreen();
-    // TTF_Font* TTF_OpenFont(std::string path, int size);
-    // bool MediumScreen();
     bool EasyScreen();
     bool MediumScreen();
     bool EndScreen();
     bool WinningScreen();
+    
     bool R1();
     bool R2();
     bool R3();
     bool R4();
     bool R5();
+    
     static Game* getPointer();
+    
     void show_time(int);
 };

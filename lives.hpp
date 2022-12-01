@@ -10,5 +10,4 @@ class Lives{
     Lives();
     void draw();
     void operator--(); //operator overloading for decreasing lives
-    void operator++();
 };
