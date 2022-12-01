@@ -8,6 +8,7 @@
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 #include "FindingNemo.hpp"
+// #include "score.hpp"
 
 class Game
 {
@@ -43,4 +44,5 @@ public:
     bool EasyScreen();
     bool MediumScreen();
     bool EndScreen();
+    bool WinningScreen();
 };

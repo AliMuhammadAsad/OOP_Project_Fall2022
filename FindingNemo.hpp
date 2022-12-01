@@ -35,7 +35,7 @@ class Finding_Nemo{
     
     public:
     Lives Life;
-
+    // Score s;
     Finding_Nemo();
 
     // void draw_lives();
@@ -59,4 +59,5 @@ class Finding_Nemo{
     void show_score();
     void collision_dhuzzz();
     void delete_Objects();
+    int get_score();
 };

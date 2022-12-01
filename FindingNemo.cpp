@@ -271,3 +271,7 @@ void Finding_Nemo::delete_Objects(){
         }
     }
 }
+
+int Finding_Nemo::get_score(){
+    return score;
+}

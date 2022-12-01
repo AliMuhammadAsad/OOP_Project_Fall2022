@@ -4,6 +4,12 @@
 #include <vector>
 #include <time.h>
 #include <iostream>
+#include <chrono>
+#include <unistd.h>
+#include <ctime>
+using namespace std;
+using namespace std::chrono;
+ 
 // #include <SDL_ttf.h>
 
 SDL_Renderer *Drawing::gRenderer = NULL;
@@ -98,19 +104,19 @@ bool Game::loadMedia()
 	return success;
 }
 
-// bool Game::BackgroundScreen()
-// {
-// 	// Loading success flag
-// 	bool success = true;
-// 	screen = 2;
-// 	gTexture = loadTexture("bg.png");
-// 	if (gTexture == NULL)
-// 	{
-// 		printf("Unable to run due to error: %s\n", SDL_GetError());
-// 		success = false;
-// 	}
-// 	return success;
-// }
+bool Game::WinningScreen()
+{
+	// Loading success flag
+	bool success = true;
+	screen = 8;
+	gTexture = loadTexture("Winning Screen.png");
+	if (gTexture == NULL)
+	{
+		printf("Unable to run due to error: %s\n", SDL_GetError());
+		success = false;
+	}
+	return success;
+}
 bool Game::HardScreen()
 {
 	// Loading success flag
@@ -127,6 +133,7 @@ bool Game::HardScreen()
 bool Game::MediumScreen()
 {
 	// Loading success flag
+	// auto start = high_resolution_clock::now();
 	bool success = true;
 	screen = 7;
 	gTexture = loadTexture("bg.png");
@@ -251,6 +258,7 @@ SDL_Texture *Game::loadTexture(std::string path)
 
 	return newTexture;
 }
+
 void Game::run( )
 {
 	bool quit = false;
@@ -258,6 +266,7 @@ void Game::run( )
 
 	Finding_Nemo *fn = new Finding_Nemo();
 	// Finding_Nemo fn;
+	auto start = high_resolution_clock::now();
 	while( !quit )
 	{
 		int xMouse, yMouse;
@@ -339,6 +348,17 @@ void Game::run( )
 				fn->show_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
+				auto stop = high_resolution_clock::now();
+				auto duration = duration_cast<seconds>(stop - start);
+				cout << "time: " << duration.count() << endl;
+				if (fn->get_score() >= 100 && duration.count() <=100)
+				{
+					WinningScreen();
+				}
+				else if (fn->get_score() <= 100 && duration.count() >= 100)
+				{
+					EndScreen();
+				}
 			}
 			// Medium Level
 			if (screen == 7)
@@ -357,6 +377,17 @@ void Game::run( )
 				fn->show_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
+				auto stop = high_resolution_clock::now();
+				auto duration = duration_cast<seconds>(stop - start);
+				cout << "time: " << duration.count() << endl;
+				if (fn->get_score() >= 100 && duration.count() <=180)
+				{
+					WinningScreen();
+				}
+				else if (fn->get_score() <= 100 && duration.count() >= 180)
+				{
+					EndScreen();
+				}
 			}
 			// Easy Level
 			if (screen == 6)
@@ -375,9 +406,23 @@ void Game::run( )
 				fn->show_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
+				auto stop = high_resolution_clock::now();
+				auto duration = duration_cast<seconds>(stop - start);
+				cout << "time: " << duration.count() << endl;
+				if (fn->get_score() >= 100 && duration.count() <=100)
+				{
+					WinningScreen();
+				}
+				else if (fn->get_score() <= 100 && duration.count() >= 100)
+				{
+					EndScreen();
+				}
 			}
 		}
-		else EndScreen();
+		else 
+		{
+			EndScreen();
+		}
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
 
