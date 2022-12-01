@@ -45,4 +45,5 @@ public:
     bool MediumScreen();
     bool EndScreen();
     bool WinningScreen();
+    void show_time(int);
 };

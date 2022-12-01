@@ -7,6 +7,8 @@
 #include <chrono>
 #include <unistd.h>
 #include <ctime>
+#include<string>
+#include<SDL_ttf.h>
 using namespace std;
 using namespace std::chrono;
  
@@ -15,6 +17,21 @@ using namespace std::chrono;
 SDL_Renderer *Drawing::gRenderer = NULL;
 SDL_Texture *Drawing::assets = NULL;
 static int screen;
+
+void Game::show_time(int t){
+	TTF_Init(); //Initializes SDL_TTF for displaying text in 
+    TTF_Font* font = TTF_OpenFont("arial.ttf", 24); //Opens a font style that can be downloaded as a .ttf file and sets a font size
+    SDL_Color color = {0, 0, 0}; //This is the texts color that can be changed using RGB values from 0 to 255.
+    string tmp = to_string(t); //converts score to string that can later be displayed using the font file - hence why we needed font.
+    SDL_Surface *surfacemessage = TTF_RenderText_Solid(font, tmp.c_str(), color); //A surface is created using functions from SDL library that displays the score on the screen.
+    SDL_Texture *Message = SDL_CreateTextureFromSurface(Drawing::gRenderer, surfacemessage); //Converts into texture that can be displayed
+    SDL_Rect Message_rect = {800, 30, 90, 30}; //create a rect for it
+    SDL_RenderCopy(Drawing::gRenderer, Message, NULL, &Message_rect);
+    SDL_FreeSurface(surfacemessage);
+    SDL_DestroyTexture(Message);
+    TTF_CloseFont(font);
+    TTF_Quit();
+}
 
 bool Game::init()
 {
@@ -265,10 +282,17 @@ void Game::run( )
 	SDL_Event e;
 
 	Finding_Nemo *fn = new Finding_Nemo();
+	// Timer *time = new Timer();
+	// time->Start();
+	// time->show_time();
+	// int time_left = 180;
+	auto start = high_resolution_clock::now();
 	// Finding_Nemo fn;
 	auto start = high_resolution_clock::now();
 	while( !quit )
 	{
+		// auto stop = high_resolution_clock::now();
+		// auto duration = duration_cast<microseconds>(stop - start);
 		int xMouse, yMouse;
 		//Handle events on queue
 		while( SDL_PollEvent( &e ) != 0 )
@@ -294,11 +318,13 @@ void Game::run( )
 				}
 				if (xMouse >= 394 && xMouse <= 499 && yMouse >= 533 && yMouse <= 585 && screen == 1)
 				{
+					// auto stop = high_resolution_clock::now();
 					quit = true;
 				}
 				if (xMouse >= 615 && xMouse <= 859 && yMouse >= 280 && yMouse <= 345 && screen == 5)
 				{
 					HardScreen();
+					// auto start = high_resolution_clock::now();
 				}
 				if (xMouse >= 355 && xMouse <= 600 && yMouse >= 280 && yMouse <= 345 && screen == 5)
 				{
@@ -332,6 +358,16 @@ void Game::run( )
 		if (fn->Life.life > 0)
 		{
 			//Hard level
+			// auto start = chrono::steady_clock::now();
+			// auto duration = duration_cast<seconds>(stop - start);
+			// auto stop = high_resolution_clock::now();
+			// auto duration = duration_cast<seconds>(stop - start);
+			// cout << "time: " << duration.count() << endl;
+			// cout << (chrono::duration_cast<chrono::nanoseconds>start.count() > 180) << endl;
+			// {
+			// 	cout << "Game end!!!" << endl;
+			// 	quit = true;
+			// }
 			if (screen == 2)
 			{
 				fn->createObject(xMouse, yMouse);
@@ -342,10 +378,13 @@ void Game::run( )
 				fn->draw_hook();
 				fn->create_Shark1_Hard();
 				fn->create_Shark2_Hard();
+				fn->create_bonusfish();
 				fn->draw_Shark1();
 				fn->draw_Shark2();
 				fn->draw_lives();
+				fn->draw_bonusfish();
 				fn->show_score();
+				fn->text_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
 				auto stop = high_resolution_clock::now();
@@ -359,6 +398,27 @@ void Game::run( )
 				{
 					EndScreen();
 				}
+				// time->Start();
+				// time->show_time();
+				// time->Start();
+				// time->show_time();
+				// fn->timer();
+				// fn->start_time();
+				// fn->show_time();
+				auto stop = high_resolution_clock::now();
+				auto duration = duration_cast<seconds>(stop - start);
+				// time_left = time_left - duration.count();
+				cout << "time: " << duration.count() << endl;
+				int t = 185 - duration.count();
+				cout << "You have " << t << " seconds left\n";
+				show_time(t);
+		// 		if (SDL_Delay(180000))
+		// `		{
+		// 			cout << "Game end!!!" << endl;
+		// 		}
+				// auto stop = high_resolution_clock::now();
+				// auto duration = duration_cast<seconds>(stop - start);
+				// cout << "time: " << duration.count() << endl;
 			}
 			// Medium Level
 			if (screen == 7)
@@ -371,10 +431,13 @@ void Game::run( )
 				fn->draw_hook();
 				fn->create_Shark1_Medium();
 				fn->create_Shark2_Medium();
+				fn->create_bonusfish();
 				fn->draw_Shark1();
 				fn->draw_Shark2();
 				fn->draw_lives();
+				fn->draw_bonusfish();
 				fn->show_score();
+				fn->text_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
 				auto stop = high_resolution_clock::now();
@@ -388,6 +451,16 @@ void Game::run( )
 				{
 					EndScreen();
 				}
+				int t = 185 - duration.count();
+				cout << "You have " << t << " seconds left\n";
+				show_time(t);
+		// 		if (SDL_Delay(180000))
+		// `		{
+		// 			cout << "Game end!!!" << endl;
+		// 		}
+				// auto stop = high_resolution_clock::now();
+				// auto duration = duration_cast<seconds>(stop - start);
+				// cout << "time: " << duration.count() << endl;
 			}
 			// Easy Level
 			if (screen == 6)
@@ -399,11 +472,14 @@ void Game::run( )
 				fn->create_hook_Easy();
 				fn->draw_hook();
 				fn->create_Shark1_Easy();
-				// fn->create_Shark2();
+				fn->create_Shark2_Easy();
+				fn->create_bonusfish();
 				fn->draw_Shark1();
-				// fn->draw_Shark2();
+				fn->draw_Shark2();
 				fn->draw_lives();
+				fn->draw_bonusfish();
 				fn->show_score();
+				fn->text_score();
 				fn->collision_dhuzzz();
 				fn->delete_Objects();
 				auto stop = high_resolution_clock::now();
@@ -417,6 +493,16 @@ void Game::run( )
 				{
 					EndScreen();
 				}
+				int t = 185 - duration.count();
+				cout << "You have " << t << " seconds left\n";
+				show_time(t);
+		// 		if (SDL_Delay(180000))
+		// `		{
+		// 			cout << "Game end!!!" << endl;
+		// 		}
+				// auto stop = high_resolution_clock::now();
+				// auto duration = duration_cast<seconds>(stop - start);
+				// cout << "time: " << duration.count() << endl;
 			}
 		}
 		else 
@@ -425,7 +511,6 @@ void Game::run( )
 		}
 		//****************************************************************
     	SDL_RenderPresent(Drawing::gRenderer); //displays the updated renderer
-
 	    SDL_Delay(100);	//causes sdl engine to delay for specified miliseconds
 	}
 			
