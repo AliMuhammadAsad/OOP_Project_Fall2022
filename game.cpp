@@ -31,6 +31,7 @@ Game* Game::getPointer(){
 		ptr = new Game();
 	}
 	return ptr;
+}
 void Game::show_time(int t){
 	TTF_Init(); //Initializes SDL_TTF for displaying text in 
     TTF_Font* font = TTF_OpenFont("arial.ttf", 24); //Opens a font style that can be downloaded as a .ttf file and sets a font size
@@ -135,19 +136,7 @@ bool Game::loadMedia()
 	return success;
 }
 
-bool Game::WinningScreen()
-{
-	// Loading success flag
-	bool success = true;
-	screen = 8;
-	gTexture = loadTexture("Winning Screen.png");
-	if (gTexture == NULL)
-	{
-		printf("Unable to run due to error: %s\n", SDL_GetError());
-		success = false;
-	}
-	return success;
-}
+
 //flag for hard screen loading
 bool Game::HardScreen()
 {

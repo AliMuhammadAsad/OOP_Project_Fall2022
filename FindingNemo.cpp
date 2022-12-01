@@ -165,7 +165,7 @@ void Finding_Nemo::create_Shark2_Medium(){
 
 void Finding_Nemo::create_bonusfish(){
      int n = rand() % 550;
-    int p = rand() % 10; //probability of generation
+    int p = rand() % 200; //probability of generation
     if(p == 1){
         BonusFish *b1 = new BonusFish(n);
         bonusfish.push_back(b1);
