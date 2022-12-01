@@ -2,22 +2,22 @@
 
 int main(int argc, char *argv[])
 {
-    Game game;
+    Game *game = Game::getPointer();
     srand(time(NULL));
-    if (!game.init())
+    if (!game->init())
     {
         printf("Failed to initialize!\n");
         return 0;
     }
     // Load media
-    if (!game.loadMedia())
+    if (!game->loadMedia())
     {
         printf("Failed to load media!\n");
         return 0;
     }
 
-    game.run();
-    game.close();
+    game->run();
+    game->close();
 
     return 0;
 }

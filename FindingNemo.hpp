@@ -40,6 +40,8 @@ class Finding_Nemo{
     Lives Life;
     // Smallfish s1;
     bool paused = false;
+    bool riddle = false;
+    bool correct = false;
     Finding_Nemo();
 
     // void draw_lives();

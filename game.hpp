@@ -25,7 +25,11 @@ class Game
     Mix_Music *gMusic = NULL;
 
     // SDL_ttf *ftexture = NULL;
-    TTF_Font* font = NULL;
+    // TTF_Font* font = NULL;
+    Game();
+    ~Game();
+
+    static Game* ptr;
 
     bool loadFromRenderedText( std::string textureText, SDL_Color textColor );
 
@@ -45,5 +49,11 @@ public:
     bool EasyScreen();
     bool MediumScreen();
     bool EndScreen();
-    bool ClueScreen();
+    bool WinningScreen();
+    bool R1();
+    bool R2();
+    bool R3();
+    bool R4();
+    bool R5();
+    static Game* getPointer();
 };

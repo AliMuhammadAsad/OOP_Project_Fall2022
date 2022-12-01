@@ -165,7 +165,7 @@ void Finding_Nemo::create_Shark2_Medium(){
 
 void Finding_Nemo::create_bonusfish(){
      int n = rand() % 550;
-    int p = rand() % 200;
+    int p = rand() % 10; //probability of generation
     if(p == 1){
         BonusFish *b1 = new BonusFish(n);
         bonusfish.push_back(b1);
@@ -275,7 +275,12 @@ void Finding_Nemo::collision_dhuzzz(){
         SDL_Rect bf = bfc->getMov();
         if(SDL_HasIntersection(&dor, &bf)){
             cout << "Dory has interacted with the bonus fish\n";
+            // paused = true;
             score += 50; //++Life;
+            /* riddle = true;
+            if(correct == true){
+                score += 50; //++Life;
+            } */
             bfc->set_to_del();
         }
     }
