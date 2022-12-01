@@ -6,7 +6,6 @@ class Score{
     
     public:
     Score(int); //constructor
-    void AddScore(); //adds points to the score
     int getScore(); //getter function for score
-
+    void operator++(); //operator overload  //adds points to the score
 };
