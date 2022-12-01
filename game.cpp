@@ -7,6 +7,8 @@
 #include <chrono>
 #include <unistd.h>
 #include <ctime>
+#include<string>
+#include<SDL_ttf.h>
 using namespace std;
 using namespace std::chrono;
 
@@ -29,6 +31,19 @@ Game* Game::getPointer(){
 		ptr = new Game();
 	}
 	return ptr;
+void Game::show_time(int t){
+	TTF_Init(); //Initializes SDL_TTF for displaying text in 
+    TTF_Font* font = TTF_OpenFont("arial.ttf", 24); //Opens a font style that can be downloaded as a .ttf file and sets a font size
+    SDL_Color color = {0, 0, 0}; //This is the texts color that can be changed using RGB values from 0 to 255.
+    string tmp = to_string(t); //converts score to string that can later be displayed using the font file - hence why we needed font.
+    SDL_Surface *surfacemessage = TTF_RenderText_Solid(font, tmp.c_str(), color); //A surface is created using functions from SDL library that displays the score on the screen.
+    SDL_Texture *Message = SDL_CreateTextureFromSurface(Drawing::gRenderer, surfacemessage); //Converts into texture that can be displayed
+    SDL_Rect Message_rect = {800, 30, 90, 30}; //create a rect for it
+    SDL_RenderCopy(Drawing::gRenderer, Message, NULL, &Message_rect);
+    SDL_FreeSurface(surfacemessage);
+    SDL_DestroyTexture(Message);
+    TTF_CloseFont(font);
+    TTF_Quit();
 }
 
 bool Game::init()
@@ -409,6 +424,10 @@ void Game::run( )
 	int xMouse, yMouse;
 
 	Finding_Nemo *fn = new Finding_Nemo();
+	// Timer *time = new Timer();
+	// time->Start();
+	// time->show_time();
+	// int time_left = 180;
 	auto start = high_resolution_clock::now();
 	// Finding_Nemo fn;
 	while( !quit )
@@ -442,6 +461,7 @@ void Game::run( )
 				if (xMouse >= 615 && xMouse <= 859 && yMouse >= 280 && yMouse <= 345 && screen == 5)
 				{
 					HardScreen();
+					// auto start = high_resolution_clock::now();
 				}
 				if (xMouse >= 355 && xMouse <= 600 && yMouse >= 280 && yMouse <= 345 && screen == 5)
 				{
@@ -517,6 +537,7 @@ void Game::run( )
 				fn->draw_lives();
 				fn->draw_bonusfish();
 				fn->show_score();
+				fn->text_score();
 				fn->collision_dhuzzz();
 				/* if (fn->riddle == true){
 					int riddle_screen[5] = {9, 10, 11, 12, 13};
@@ -528,8 +549,16 @@ void Game::run( )
 					else if (sc == 13){gTexture = loadTexture("R5.png");screen =13;fn->riddle == false;}
 				}   */
 				fn->delete_Objects();
+				// time->Start();
+				// time->show_time();
+				// time->Start();
+				// time->show_time();
+				// fn->timer();
+				// fn->start_time();
+				// fn->show_time();
 				auto stop = high_resolution_clock::now();
 				auto duration = duration_cast<seconds>(stop - start);
+				// time_left = time_left - duration.count();
 				cout << "time: " << duration.count() << endl;
 				/* if (fn->get_score() >= 100 && duration.count() <=100)
 					{
@@ -539,6 +568,16 @@ void Game::run( )
 					{
 						EndScreen();
 				} */
+				int t = 185 - duration.count();
+				cout << "You have " << t << " seconds left\n";
+				show_time(t);
+		// 		if (SDL_Delay(180000))
+		// `		{
+		// 			cout << "Game end!!!" << endl;
+		// 		}
+				// auto stop = high_resolution_clock::now();
+				// auto duration = duration_cast<seconds>(stop - start);
+				// cout << "time: " << duration.count() << endl;
 			}
 			// Medium Level
 			if (screen == 7)
@@ -557,6 +596,7 @@ void Game::run( )
 				fn->draw_lives();
 				fn->draw_bonusfish();
 				fn->show_score();
+				fn->text_score();
 				fn->collision_dhuzzz();
 				/* if (fn->riddle == true){
 					int riddle_screen[5] = {9, 10, 11, 12, 13};
@@ -579,6 +619,16 @@ void Game::run( )
 				{
 					EndScreen();
 				} */
+				int t = 185 - duration.count();
+				cout << "You have " << t << " seconds left\n";
+				show_time(t);
+		// 		if (SDL_Delay(180000))
+		// `		{
+		// 			cout << "Game end!!!" << endl;
+		// 		}
+				// auto stop = high_resolution_clock::now();
+				// auto duration = duration_cast<seconds>(stop - start);
+				// cout << "time: " << duration.count() << endl;
 			}
 			// Easy Level
 			if (screen == 6)
@@ -597,6 +647,7 @@ void Game::run( )
 				fn->draw_lives();
 				fn->draw_bonusfish();
 				fn->show_score();
+				fn->text_score();
 				fn->collision_dhuzzz();
 				/* if (fn->riddle == true){
 					int riddle_screen[5] = {9, 10, 11, 12, 13};
@@ -620,6 +671,16 @@ void Game::run( )
 					EndScreen();
 				} */
 		
+				int t = 185 - duration.count();
+				cout << "You have " << t << " seconds left\n";
+				show_time(t);
+		// 		if (SDL_Delay(180000))
+		// `		{
+		// 			cout << "Game end!!!" << endl;
+		// 		}
+				// auto stop = high_resolution_clock::now();
+				// auto duration = duration_cast<seconds>(stop - start);
+				// cout << "time: " << duration.count() << endl;
 			}
 			/* if (screen == 9 || screen == 10 || screen == 11 || screen == 12 || screen == 13){
 				string ans;

@@ -56,4 +56,5 @@ public:
     bool R4();
     bool R5();
     static Game* getPointer();
+    void show_time(int);
 };
